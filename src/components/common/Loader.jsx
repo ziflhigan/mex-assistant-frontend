@@ -1,43 +1,103 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-// Implements the loading dots animation from the mockup CSS
-// TODO: Ensure CSS for .loading and .loading-dot is defined globally or scoped here
-
-const Loader = ({ size = 'medium' }) => {
-  // Adjust styles based on size prop if needed
-  const dotStyle = {
-    width: size === 'small' ? '8px' : '10px',
-    height: size === 'small' ? '8px' : '10px',
-    borderRadius: '50%',
-    backgroundColor: 'var(--grab-green)', // Use CSS variable
-    margin: '0 5px',
-    // Animation needs to be defined in CSS
-    // animation: 'loading 1.4s infinite ease-in-out both'
+/**
+ * Loader component that displays animated dots
+ * Matches the design in the prototype
+ */
+const Loader = ({ 
+  size = 'medium', 
+  color = 'var(--grab-green)',
+  fullWidth = false,
+  className = '',
+  style = {}
+}) => {
+  // Size configurations
+  const sizes = {
+    small: {
+      dot: { width: '6px', height: '6px' },
+      container: { height: '30px' }
+    },
+    medium: {
+      dot: { width: '10px', height: '10px' },
+      container: { height: '50px' }
+    },
+    large: {
+      dot: { width: '14px', height: '14px' },
+      container: { height: '70px' }
+    }
   };
+
+  const sizeConfig = sizes[size] || sizes.medium;
 
   const containerStyle = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '50px', // Adjust as needed
+    width: fullWidth ? '100%' : 'auto',
+    height: sizeConfig.container.height,
+    ...style
   };
 
+  // Base dot style
+  const dotStyle = {
+    width: sizeConfig.dot.width,
+    height: sizeConfig.dot.height,
+    backgroundColor: color,
+    borderRadius: '50%',
+    margin: '0 5px',
+    // The animation is defined in CSS
+  };
+
+  // CSS for animations
+  const loaderCSS = `
+    @keyframes mexLoaderBounce {
+      0%, 80%, 100% { 
+        transform: scale(0);
+        opacity: 0.5;
+      }
+      40% { 
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .mex-loader-dot {
+      animation: mexLoaderBounce 1.4s infinite ease-in-out both;
+    }
+
+    .mex-loader-dot:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    .mex-loader-dot:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+  `;
+
   return (
-    <div style={containerStyle} className="loading"> {/* Use class for animation targeting */}
-      <div style={{...dotStyle, animationDelay: '-0.32s'}} className="loading-dot"></div>
-      <div style={{...dotStyle, animationDelay: '-0.16s'}} className="loading-dot"></div>
-      <div style={dotStyle} className="loading-dot"></div>
-    </div>
+    <>
+      <style>{loaderCSS}</style>
+      <div 
+        className={`mex-loader ${className}`} 
+        style={containerStyle}
+        aria-label="Loading"
+        role="status"
+      >
+        <div className="mex-loader-dot" style={dotStyle}></div>
+        <div className="mex-loader-dot" style={dotStyle}></div>
+        <div className="mex-loader-dot" style={dotStyle}></div>
+      </div>
+    </>
   );
 };
 
-// Add CSS to your global stylesheet (e.g., index.css or App.css)
-/*
-@keyframes loading {
-  0%, 80%, 100% { transform: scale(0); }
-  40% { transform: scale(1.0); }
-}
-*/
-
+Loader.propTypes = {
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  color: PropTypes.string,
+  fullWidth: PropTypes.bool,
+  className: PropTypes.string,
+  style: PropTypes.object
+};
 
 export default Loader;
