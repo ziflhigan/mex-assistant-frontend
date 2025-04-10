@@ -69,17 +69,12 @@ const SalesTrendChart = forwardRef((props, ref) => {
                 }
             }
 
-            // Combine actual and predicted data
-            const allLabels = [...labels, ...predictedLabels];
-            const allSales = [...data.map(item => item.sales), ...predictedSales];
-            const allOrders = [...orderData, ...predictedOrders];
-
             // Create the chart
             import('chart.js').then((ChartJS) => {
                 chartInstance.current = new ChartJS.Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: allLabels,
+                        labels: [...labels, ...predictedLabels],
                         datasets: [
                             {
                                 label: 'Sales ($)',
@@ -181,7 +176,7 @@ const SalesTrendChart = forwardRef((props, ref) => {
                                     color: (context) => {
                                         // Add vertical line separating actual and predicted data
                                         if (showPrediction && context.tick.value === labels.length - 1) {
-                                            return 'rgba(0, 177, 79, 0.5)';
+                                            return 'rgba(71,177,0,0.5)';
                                         }
                                         return 'rgba(0, 0, 0, 0.1)';
                                     },
