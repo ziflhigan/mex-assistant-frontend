@@ -8,20 +8,11 @@ import './styles/index.css';
  * Main App component
  * Sets up routing and context providers
  */
-function App() {
-  return (
-    <AppProvider>
-      <Router>
-        <Routes>
-          {/* MainPage handles all sub-routes */}
-          <Route path="/*" element={<MainPage />} />
-          
-          {/* Redirect base path to dashboard */}
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-        </Routes>
-      </Router>
-    </AppProvider>
-  );
+export default function App() {
+    return (
+        <div>
+            <h1>Hello, World!</h1>
+            <p>调试信息：App 已加载</p>
+        </div>
+    );
 }
-
-export default App;
