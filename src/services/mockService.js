@@ -2,6 +2,7 @@
 import { mockDashboardStats, mockSalesTrend, mockHourlySales, mockDailySales, mockTopItems } from '../data/mockDashboardData';
 import { mockChatResponse } from '../data/mockChatResponses';
 import { mockMerchants } from '../data/mockMerchants'; // Ensure this file exists
+import {mockAiInsights} from '../services/mockAiInsight.jsx'
 
 // Simulate network delay
 const delay = (ms = 500) => new Promise(resolve => setTimeout(resolve, ms));
@@ -64,3 +65,50 @@ export const getMockMerchants = async () => {
 }
 
 // TODO: Add mock functions for Notifications, Settings, AI Insights if needed for prototype
+
+export const getMockAiInsights = async (merchantId, period) => {
+    await delay(900);
+    console.log(`Mock Fetch: AI Insights for ${merchantId}, period ${period}`);
+    return mockAiInsights[period] || mockAiInsights['Week'];
+};
+
+// --- Aggregated Dashboard Data Function ---
+
+/**
+ * Get complete dashboard data
+ * @param {Object} options - Options for fetching data
+ * @param {string} options.merchantId - Merchant ID
+ * @param {string} options.timeFilter - Time period (Today, Week, Month, Year)
+ * @returns {Promise<Object>} Combined dashboard data
+ */
+export const getDashboardData = async ({ merchantId = null, timeFilter = 'Week' } = {}) => {
+    console.log(`Fetching dashboard data for merchant ${merchantId}, period ${timeFilter}`);
+
+    // Normalize time filter
+    const period = timeFilter.charAt(0).toUpperCase() + timeFilter.slice(1).toLowerCase();
+
+    try {
+        // Fetch all data in parallel for better performance
+        const [stats, salesTrend, hourlySales, dailySales, topItems, aiInsights] = await Promise.all([
+            getMockDashboardStats(merchantId, period),
+            getMockSalesTrend(merchantId, period),
+            getMockHourlySales(merchantId, period),
+            getMockDailySales(merchantId, period),
+            getMockTopItems(merchantId, period),
+            getMockAiInsights(merchantId, period)
+        ]);
+
+        // Combine all data into a single object
+        return {
+            ...stats,
+            salesTrend,
+            hourlySales,
+            dailySales,
+            topItems,
+            aiInsights
+        };
+    } catch (error) {
+        console.error('Error fetching dashboard data:', error);
+        throw error;
+    }
+};
