@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAppContext } from '../contexts/AppContext';
 import AppLayout from '../components/layout/AppLayout';
 import DashboardContainer from '../components/dashboard/DashboardContainer';
+import { DashboardProvider } from '../contexts/DashboardContext';
 import ChatContainer from '../components/chat/ChatContainer';
 import SettingsPage from './SettingsPage';
 import NotificationsPage from './NotificationsPage';
@@ -41,7 +42,14 @@ const MainPage = () => {
       onMobileClose={closeMobileSidebar}
     >
       <Routes>
-        <Route path="dashboard" element={<DashboardContainer />} />
+          <Route
+            path="dashboard"
+            element={
+              <DashboardProvider>
+                <DashboardContainer />
+              </DashboardProvider>
+            }
+          />
         <Route path="chat" element={<ChatContainer />} />
         <Route path="settings" element={<SettingsPage />} />
         <Route path="notifications" element={<NotificationsPage />} />
