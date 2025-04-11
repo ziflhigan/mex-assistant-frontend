@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import StatsGrid from './StatsGrid';
 import SalesTrendChart from './SalesTrendChart';
 import HourlySalesChart from './HourlySalesChart';
@@ -7,54 +7,49 @@ import TopItemsTable from './TopItemsTable';
 import AiInsights from './AiInsights';
 import TimeFilter from '../common/TimeFilter';
 import Loader from '../common/Loader';
-import { DashboardProvider } from '../../contexts/DashboardContext';
-import { getDashboardData } from '../../services/mockService';
+import MerchantSelector from '../common/MerchantSelector';
+import { useDashboard } from '../../contexts/DashboardContext';
 import { downloadDashboardReport } from '../../utils/DownloadChartsUtil';
 import './Dashboard.css';
 
 function DashboardContainer() {
-    const [dashboardData, setDashboardData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [timeFrame, setTimeFrame] = useState('Today');
-    const [error, setError] = useState(null);
+    // Use the dashboard context
+    const {
+        dashboardData,
+        timeFilter,
+        loading,
+        error,
+        lastUpdated,
+        handleTimeFilterChange,
+        refreshData,
+        getComparisonText
+    } = useDashboard();
 
     // Chart refs for downloading
     const salesTrendChartRef = useRef(null);
     const hourlySalesChartRef = useRef(null);
     const dailySalesChartRef = useRef(null);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                // In a real app, you would pass the timeFilter to the API
-                const data = await getDashboardData();
-                setDashboardData(data);
-                setError(null);
-            } catch (err) {
-                console.error("Error fetching dashboard data:", err);
-                setError("Failed to load dashboard data. Please try again later.");
-            } finally {
-                setLoading(false);
-            }
-        };
+    // Convert context timeFilter to display format for TimeFilter component
+    const displayTimeFilter = timeFilter.charAt(0).toUpperCase() + timeFilter.slice(1);
 
-        fetchData();
-    }, [timeFrame]); // Re-fetch when timeFilter changes
-
-    const handleTimeFrameChange = (selectedTimeFrame) => {
-        setTimeFrame(selectedTimeFrame);
-        console.log(`Time frame changed to: ${selectedTimeFrame}`);
-    };
+    // Format the last updated timestamp
+    const formattedLastUpdated = lastUpdated ?
+        new Date(lastUpdated).toLocaleString() :
+        'Not yet loaded';
 
     const handleExport = () => {
         console.log("Exporting dashboard data...");
         // Call download function
         if (dashboardData) {
-            downloadDashboardReport(dashboardData, timeFrame.toLowerCase());
+            downloadDashboardReport(dashboardData, timeFilter);
         } else {
             alert("No data available to export");
         }
+    };
+
+    const handleRefresh = () => {
+        refreshData();
     };
 
     const handleViewAll = (section) => {
@@ -67,105 +62,122 @@ function DashboardContainer() {
             <div className="dashboard-error">
                 <h2>Error</h2>
                 <p>{error}</p>
-                <button onClick={() => window.location.reload()}>Retry</button>
+                <button onClick={refreshData}>Retry</button>
             </div>
         );
     }
 
     return (
-        <DashboardProvider value={{ dashboardData, timeFilter: timeFrame.toLowerCase() }}>
-            <div className="dashboard-container">
-                <div className="dashboard-header">
+        <div className="dashboard-container">
+            <div className="dashboard-header">
+                <div className="dashboard-title-area">
                     <h2 className="dashboard-title">Merchant Dashboard</h2>
-                    <div className="dashboard-actions">
-                        <TimeFilter
-                            options={['Today', 'Week', 'Month', 'Year']}
-                            defaultValue={timeFrame}
-                            onChange={handleTimeFrameChange}
-                        />
-                        <button className="export-button" onClick={handleExport}>
-                            <i className="fas fa-download"></i> Export Data
-                        </button>
+                    <div className="dashboard-subtitle">
+            <span className="last-updated">
+              Last updated: {formattedLastUpdated}
+            </span>
+                        {!loading && (
+                            <button className="refresh-button" onClick={handleRefresh}>
+                                <i className="fas fa-sync-alt"></i>
+                            </button>
+                        )}
                     </div>
                 </div>
+                <div className="dashboard-actions">
+                    <MerchantSelector />
+                    <TimeFilter
+                        options={['Today', 'Week', 'Month', 'Year']}
+                        defaultValue={displayTimeFilter}
+                        onChange={handleTimeFilterChange}
+                    />
+                    <button className="export-button" onClick={handleExport}>
+                        <i className="fas fa-download"></i> Export Data
+                    </button>
+                </div>
+            </div>
 
-                {loading && !dashboardData ? (
-                    <div className="dashboard-loading">
-                        <Loader />
-                    </div>
-                ) : (
-                    <>
-                        <section className="stats-section">
-                            <StatsGrid data={dashboardData} timeFrame={timeFrame} />
-                        </section>
+            {loading && !dashboardData ? (
+                <div className="dashboard-loading">
+                    <Loader />
+                </div>
+            ) : (
+                <>
+                    <section className="stats-section">
+                        <StatsGrid data={dashboardData} timeFrame={displayTimeFilter} comparisonText={getComparisonText()} />
+                    </section>
 
-                        <section className="charts-section">
-                            <div className="chart-container chart-container-full">
+                    <section className="charts-section">
+                        <div className="chart-container chart-container-full">
+                            <div className="chart-header">
+                                <div className="chart-title">Sales & Orders Trend</div>
+                                <div className="chart-actions">
+                                    <button onClick={() => handleViewAll('salesTrend')}>
+                                        <i className="fas fa-expand"></i> View Full
+                                    </button>
+                                    <button onClick={handleExport}>
+                                        <i className="fas fa-download"></i> Export
+                                    </button>
+                                </div>
+                            </div>
+                            <SalesTrendChart
+                                data={dashboardData?.salesTrend}
+                                ref={salesTrendChartRef}
+                            />
+                        </div>
+
+                        <div className="charts-grid">
+                            <div className="chart-container">
                                 <div className="chart-header">
-                                    <div className="chart-title">Sales & Orders Trend</div>
+                                    <div className="chart-title">Sales by Hour</div>
                                     <div className="chart-actions">
-                                        <button onClick={handleExport}>
-                                            <i className="fas fa-download"></i> Export
-                                        </button>
+                                        <button onClick={() => handleViewAll('hourlySales')}>View All</button>
                                     </div>
                                 </div>
-                                <SalesTrendChart
-                                    data={dashboardData?.salesTrend}
-                                    ref={salesTrendChartRef}
+                                <HourlySalesChart
+                                    data={dashboardData?.hourlySales}
+                                    ref={hourlySalesChartRef}
                                 />
                             </div>
-
-                            <div className="charts-grid">
-                                <div className="chart-container">
-                                    <div className="chart-header">
-                                        <div className="chart-title">Sales by Hour</div>
-                                        <div className="chart-actions">
-                                            <button onClick={() => handleViewAll('hourlySales')}>View All</button>
-                                        </div>
+                            <div className="chart-container">
+                                <div className="chart-header">
+                                    <div className="chart-title">Sales by Day</div>
+                                    <div className="chart-actions">
+                                        <button onClick={() => handleViewAll('dailySales')}>View All</button>
                                     </div>
-                                    <HourlySalesChart
-                                        data={dashboardData?.hourlySales}
-                                        ref={hourlySalesChartRef}
-                                    />
                                 </div>
-                                <div className="chart-container">
-                                    <div className="chart-header">
-                                        <div className="chart-title">Sales by Day</div>
-                                        <div className="chart-actions">
-                                            <button onClick={() => handleViewAll('dailySales')}>View All</button>
-                                        </div>
-                                    </div>
-                                    <DailySalesChart
-                                        data={dashboardData?.dailySales}
-                                        ref={dailySalesChartRef}
-                                    />
-                                </div>
+                                <DailySalesChart
+                                    data={dashboardData?.dailySales}
+                                    ref={dailySalesChartRef}
+                                />
                             </div>
-                        </section>
+                        </div>
+                    </section>
 
-                        <section className="top-items">
-                            <div className="chart-header">
-                                <div className="chart-title">Top Selling Items</div>
-                                <div className="chart-actions">
-                                    <button onClick={() => handleViewAll('topItems')}>View All</button>
-                                </div>
+                    <section className="top-items">
+                        <div className="chart-header">
+                            <div className="chart-title">Top Selling Items</div>
+                            <div className="chart-actions">
+                                <button onClick={() => handleViewAll('topItems')}>View All</button>
                             </div>
-                            <TopItemsTable data={dashboardData?.topItems} />
-                        </section>
+                        </div>
+                        <TopItemsTable data={dashboardData?.topItems} />
+                    </section>
 
-                        <section className="insights-container">
-                            <div className="insights-header">
-                                <div className="insights-title">
-                                    <i className="fas fa-lightbulb"></i>
-                                    AI-Powered Insights
-                                </div>
+                    <section className="insights-container">
+                        <div className="insights-header">
+                            <div className="insights-title">
+                                <i className="fas fa-lightbulb"></i>
+                                AI-Powered Insights
                             </div>
-                            <AiInsights insights={dashboardData?.aiInsights} />
-                        </section>
-                    </>
-                )}
-            </div>
-        </DashboardProvider>
+                            <div className="chart-actions">
+                                <button onClick={() => handleViewAll('aiInsights')}>View All Insights</button>
+                            </div>
+                        </div>
+                        <AiInsights insights={dashboardData?.aiInsights} />
+                    </section>
+                </>
+            )}
+        </div>
     );
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * MerchantSelector component for switching between merchant accounts
+ * MerchantSelector.jsx component for switching between merchant accounts
  * Used in the sidebar footer to allow users to switch between different merchant profiles
  */
 const MerchantSelector = ({
