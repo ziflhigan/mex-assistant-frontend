@@ -1,1 +1,147 @@
-{}
+{
+    "common": {
+      "loading": "Memuatkan...",
+      "error": "Ralat telah berlaku",
+      "retry": "Cuba Lagi",
+      "save": "Simpan",
+      "cancel": "Batal",
+      "delete": "Padam",
+      "edit": "Edit",
+      "submit": "Hantar",
+      "search": "Cari",
+      "filter": "Tapis",
+      "sort": "Susun",
+      "clear": "Kosongkan",
+      "close": "Tutup"
+    },
+    "nav": {
+      "home": "Laman Utama",
+      "settings": "Tetapan",
+      "profile": "Profil",
+      "chat": "Sembang",
+      "dashboard": "Papan Pemuka"
+    },
+    "auth": {
+      "login": "Log Masuk",
+      "logout": "Log Keluar",
+      "signup": "Daftar",
+      "email": "Emel",
+      "password": "Kata Laluan",
+      "forgotPassword": "Lupa Kata Laluan?",
+      "rememberMe": "Ingat Saya"
+    },
+    "chat": {
+      "sendMessage": "Hantar Mesej",
+      "typeMessage": "Taip mesej anda...",
+      "attachFile": "Lampirkan Fail",
+      "newChat": "Sembang Baru",
+      "deleteChat": "Padam Sembang",
+      "clearHistory": "Kosongkan Sejarah",
+      "downloadChat": "Muat Turun Sembang"
+    },
+    "settings": {
+      "title": "Tetapan",
+      "subtitle": "Urus tetapan dan keutamaan akaun anda",
+      "saveSuccess": "Tetapan berjaya disimpan",
+      "personal": "Maklumat Peribadi",
+      "business": "Tetapan Perniagaan",
+      "notifications": "Pemberitahuan",
+      "preferences": "Keutamaan",
+      
+      "name": "Nama Penuh",
+      "email": "Alamat E-mel",
+      "phone": "Nombor Telefon",
+      "language": "Bahasa",
+      "timezone": "Zon Masa",
+      
+      "businessInfo": "Maklumat Perniagaan",
+      "businessName": "Nama Perniagaan",
+      "businessType": "Jenis Perniagaan",
+      "address": "Alamat Perniagaan",
+      "operatingHours": "Waktu Operasi",
+      "openingTime": "Waktu Buka",
+      "closingTime": "Waktu Tutup",
+      "currency": "Mata Wang",
+      "taxRate": "Kadar Cukai",
+      "deliveryRadius": "Radius Penghantaran",
+      
+      "notificationPreferences": "Keutamaan Pemberitahuan",
+      "email": "Pemberitahuan E-mel",
+      "push": "Pemberitahuan Push",
+      "salesAlerts": "Makluman Jualan",
+      "lowStockAlerts": "Makluman Stok Rendah",
+      "orderNotifications": "Pemberitahuan Pesanan",
+      "customerReviews": "Ulasan Pelanggan",
+      
+      "theme": "Tema",
+      "lightTheme": "Tema Terang",
+      "darkTheme": "Tema Gelap",
+      "systemTheme": "Tema Sistem",
+      "fontSize": "Saiz Fon",
+      "small": "Kecil",
+      "medium": "Sederhana",
+      "large": "Besar",
+      "highContrast": "Mod Kontras Tinggi",
+      "compactMode": "Mod Padat",
+      "autoRefresh": "Segar Semula Automatik",
+      "refreshInterval": "Selang Segar Semula",
+      
+      "businessTypes": {
+        "restaurant": "Restoran",
+        "cafe": "Kafe",
+        "foodStall": "Gerai Makanan",
+        "bakery": "Kedai Roti"
+      },
+      
+      "currencies": {
+        "idr": "IDR (Rupiah Indonesia)",
+        "myr": "MYR (Ringgit Malaysia)",
+        "sgd": "SGD (Dolar Singapura)"
+      },
+      
+      "timezones": {
+        "utc": "UTC (Waktu Universal Terkoordinasi)",
+        "jakarta": "Jakarta (GMT+7)",
+        "kualaLumpur": "Kuala Lumpur (GMT+8)",
+        "singapore": "Singapura (GMT+8)"
+      },
+      
+      "tooltips": {
+        "highContrast": "Meningkatkan kontras untuk penglihatan yang lebih baik",
+        "compactMode": "Mengurangkan ruang dalam antara muka",
+        "autoRefresh": "Menyegarkan data secara automatik pada selang masa tertentu",
+        "deliveryRadius": "Jarak penghantaran maksimum dalam kilometer",
+        "taxRate": "Kadar cukai lalai untuk transaksi"
+      }
+    },
+    "profile": {
+      "title": "Profil",
+      "editProfile": "Edit Profil",
+      "name": "Nama",
+      "bio": "Bio",
+      "location": "Lokasi",
+      "website": "Laman Web",
+      "saveChanges": "Simpan Perubahan"
+    },
+    "errors": {
+      "required": "Medan ini diperlukan",
+      "invalidEmail": "Alamat e-mel tidak sah",
+      "passwordLength": "Kata laluan mestilah sekurang-kurangnya 8 aksara",
+      "networkError": "Ralat rangkaian. Sila periksa sambungan anda.",
+      "unknownError": "Ralat yang tidak diketahui telah berlaku"
+    },
+    "dates": {
+      "today": "Hari Ini",
+      "yesterday": "Semalam",
+      "tomorrow": "Esok"
+    },
+    "homePage": {
+      "welcome": "Selamat Datang ke Aplikasi Kami",
+      "intro": "Ini adalah contoh bagaimana untuk menyediakan sokongan pelbagai bahasa."
+    },
+    "settingsPage": {
+      "header": "Tetapan",
+      "language": "Tukar Bahasa"
+    }
+  }
+  

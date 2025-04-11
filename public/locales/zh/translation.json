@@ -1,1 +1,147 @@
-{}
+{
+    "common": {
+      "loading": "加载中...",
+      "error": "发生错误",
+      "retry": "重试",
+      "save": "保存",
+      "cancel": "取消",
+      "delete": "删除",
+      "edit": "编辑",
+      "submit": "提交",
+      "search": "搜索",
+      "filter": "筛选",
+      "sort": "排序",
+      "clear": "清除",
+      "close": "关闭"
+    },
+    "nav": {
+      "home": "首页",
+      "settings": "设置",
+      "profile": "个人资料",
+      "chat": "聊天",
+      "dashboard": "仪表板"
+    },
+    "auth": {
+      "login": "登录",
+      "logout": "登出",
+      "signup": "注册",
+      "email": "电子邮件",
+      "password": "密码",
+      "forgotPassword": "忘记密码？",
+      "rememberMe": "记住我"
+    },
+    "chat": {
+      "sendMessage": "发送消息",
+      "typeMessage": "输入您的消息...",
+      "attachFile": "附加文件",
+      "newChat": "新聊天",
+      "deleteChat": "删除聊天",
+      "clearHistory": "清除历史记录",
+      "downloadChat": "下载聊天记录"
+    },
+    "settings": {
+      "title": "设置",
+      "subtitle": "管理您的账户设置和偏好",
+      "saveSuccess": "设置保存成功",
+      "personal": "个人信息",
+      "business": "商业设置",
+      "notifications": "通知",
+      "preferences": "偏好设置",
+      
+      "name": "姓名",
+      "email": "电子邮箱",
+      "phone": "电话号码",
+      "language": "语言",
+      "timezone": "时区",
+      
+      "businessInfo": "商业信息",
+      "businessName": "商家名称",
+      "businessType": "商家类型",
+      "address": "商家地址",
+      "operatingHours": "营业时间",
+      "openingTime": "开始时间",
+      "closingTime": "结束时间",
+      "currency": "货币",
+      "taxRate": "税率",
+      "deliveryRadius": "配送范围",
+      
+      "notificationPreferences": "通知偏好",
+      "email": "邮件通知",
+      "push": "推送通知",
+      "salesAlerts": "销售提醒",
+      "lowStockAlerts": "库存不足提醒",
+      "orderNotifications": "订单通知",
+      "customerReviews": "客户评价",
+      
+      "theme": "主题",
+      "lightTheme": "浅色主题",
+      "darkTheme": "深色主题",
+      "systemTheme": "系统主题",
+      "fontSize": "字体大小",
+      "small": "小",
+      "medium": "中",
+      "large": "大",
+      "highContrast": "高对比度模式",
+      "compactMode": "紧凑模式",
+      "autoRefresh": "自动刷新",
+      "refreshInterval": "刷新间隔",
+      
+      "businessTypes": {
+        "restaurant": "餐厅",
+        "cafe": "咖啡厅",
+        "foodStall": "小吃摊",
+        "bakery": "面包店"
+      },
+      
+      "currencies": {
+        "idr": "IDR (印尼盾)",
+        "myr": "MYR (马来西亚林吉特)",
+        "sgd": "SGD (新加坡元)"
+      },
+      
+      "timezones": {
+        "utc": "UTC (协调世界时)",
+        "jakarta": "雅加达 (GMT+7)",
+        "kualaLumpur": "吉隆坡 (GMT+8)",
+        "singapore": "新加坡 (GMT+8)"
+      },
+      
+      "tooltips": {
+        "highContrast": "提高对比度以获得更好的可视性",
+        "compactMode": "减少界面中的空间",
+        "autoRefresh": "按指定间隔自动刷新数据",
+        "deliveryRadius": "最大配送距离（公里）",
+        "taxRate": "交易的默认税率"
+      }
+    },
+    "profile": {
+      "title": "个人资料",
+      "editProfile": "编辑资料",
+      "name": "姓名",
+      "bio": "简介",
+      "location": "位置",
+      "website": "网站",
+      "saveChanges": "保存更改"
+    },
+    "errors": {
+      "required": "此字段为必填项",
+      "invalidEmail": "无效的电子邮箱地址",
+      "passwordLength": "密码长度必须至少为8个字符",
+      "networkError": "网络错误，请检查您的连接",
+      "unknownError": "发生未知错误"
+    },
+    "dates": {
+      "today": "今天",
+      "yesterday": "昨天",
+      "tomorrow": "明天"
+    },
+    "homePage": {
+      "welcome": "欢迎使用我们的应用",
+      "intro": "这是一个如何设置多语言支持的示例"
+    },
+    "settingsPage": {
+      "header": "设置",
+      "language": "更改语言"
+    }
+  }
+  
