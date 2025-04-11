@@ -1,8 +1,8 @@
 // Import mock data
 import { mockDashboardStats, mockSalesTrend, mockHourlySales, mockDailySales, mockTopItems } from '../data/mockDashboardData';
-import { mockChatResponse } from '../data/mockChatResponses';
-import { mockMerchants } from '../data/mockMerchants'; // Ensure this file exists
-import {mockAiInsights} from '../services/mockAiInsight.jsx'
+import mockChatResponses from '../data/mockChatResponses';
+import mockMerchants  from '../data/mockMerchants'; // Ensure this file exists
+import mockAiInsights from '../services/mockAiInsight.jsx'
 
 // Simulate network delay
 const delay = (ms = 500) => new Promise(resolve => setTimeout(resolve, ms));
@@ -53,7 +53,7 @@ export const getMockChatResponse = async (message, merchantId, language) => {
     // Return a predefined response or simple logic based on keywords
     // Structure should include text and potentially chart data reference
     // Example: { text: "...", visualization: { type: 'bar', data: {...} } }
-    return mockChatResponse(message); // Function in mockChatResponses.js handles keyword logic
+    return mockChatResponses(message); // Function in mockChatResponses.js handles keyword logic
 };
 
 // --- Other Mock Functions ---

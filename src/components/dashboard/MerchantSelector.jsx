@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDashboard } from '../../contexts/DashboardContext';
-import { getMerchants } from '../../services/mockService';
+import { getMockMerchants } from '../../services/mockService';
 import './MerchantSelector.css';
 
 /**
@@ -15,7 +15,7 @@ const MerchantSelector = () => {
     useEffect(() => {
         const fetchMerchants = async () => {
             try {
-                const data = await getMerchants();
+                const data = await getMockMerchants();
                 setMerchants(data);
 
                 // If no merchant is selected yet, select the first one

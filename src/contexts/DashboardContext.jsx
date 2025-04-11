@@ -1,9 +1,9 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { getDashboardData, getTopItems, getAiInsights } from '../services/mockService';
+import { getDashboardData, getMockTopItems , getMockAiInsights } from '../services/mockService';
 import useTimeFilter from '../hooks/useTimeFilter';
 
 // Create the context
-const DashboardContext = createContext();
+const DashboardContext = createContext ();
 
 // Create a custom hook to use the dashboard context
 export const useDashboard = () => {
@@ -46,8 +46,8 @@ export const DashboardProvider = ({ children }) => {
 
         // Fetch additional data in parallel for better performance
         const [topItemsResult, insightsResult] = await Promise.all([
-          getTopItems({ ...options, limit: 5 }),
-          getAiInsights(options)
+          getMockTopItems(options.merchantId, options.timeFilter),
+          getMockAiInsights(options.merchantId, options.timeFilter)
         ]);
 
         // Combine all data
@@ -68,7 +68,7 @@ export const DashboardProvider = ({ children }) => {
       }
     };
 
-    fetchData();
+    void fetchData();
   }, [timeFilter, selectedMerchant]);
 
   // Function to refresh dashboard data

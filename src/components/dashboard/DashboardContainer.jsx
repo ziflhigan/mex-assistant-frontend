@@ -1,4 +1,4 @@
-import React, {useRef } from 'react';
+import React, { useRef } from 'react';
 import StatsGrid from './StatsGrid';
 import SalesTrendChart from './SalesTrendChart';
 import HourlySalesChart from './HourlySalesChart';
