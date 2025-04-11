@@ -1,46 +1,66 @@
-// src/services/mockService.js
+// Import mock data
+import { mockDashboardStats, mockSalesTrend, mockHourlySales, mockDailySales, mockTopItems } from '../data/mockDashboardData';
+import { mockChatResponse } from '../data/mockChatResponses';
+import { mockMerchants } from '../data/mockMerchants'; // Ensure this file exists
 
-const mockChatResponses = {
-  "hello": "Hello there! How can I assist you today?",
-  "sales": "Your total sales for this month are $10,000.",
-  "default": "I'm still learning. Can you rephrase your request?",
+// Simulate network delay
+const delay = (ms = 500) => new Promise(resolve => setTimeout(resolve, ms));
+
+// --- Dashboard Mock Functions ---
+
+export const getMockDashboardStats = async (merchantId, period) => {
+    await delay();
+    console.log(`Mock Fetch: Stats for ${merchantId}, period ${period}`);
+    // Return data structure similar to what StatCard/StatsGrid expects
+    // This might vary based on the selected period
+    return mockDashboardStats[period] || mockDashboardStats['Week']; // Fallback
 };
 
-const mockDashboardData = {
-  totalSales: 50000,
-  totalOrders: 1200,
-  averageOrderValue: 41.67,
-  salesTrend: [
-    { date: "2023-01-01", sales: 1000 },
-    { date: "2023-01-08", sales: 1200 },
-    { date: "2023-01-15", sales: 1500 },
-    { date: "2023-01-22", sales: 1300 },
-    { date: "2023-01-29", sales: 1600 },
-  ],
+export const getMockSalesTrend = async (merchantId, period) => {
+    await delay(800); // Longer delay for charts
+    console.log(`Mock Fetch: Sales Trend for ${merchantId}, period ${period}`);
+    // Return data formatted for the SalesTrendChart
+    // Example structure: { labels: [...], datasets: [{ label: 'Sales', data: [...] }, { label: 'Orders', data: [...] }] }
+    return mockSalesTrend[period] || mockSalesTrend['Week'];
 };
 
-const mockMerchants = [
-  { id: 1, name: "Merchant A" },
-  { id: 2, name: "Merchant B" },
-];
-
-export const getChatResponse = async (message) => {
-  await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate API delay
-  const messageKey = Object.keys(mockChatResponses).find((key) =>
-    message.toLowerCase().includes(key)
-  );
-  return {
-    text: mockChatResponses[messageKey] || mockChatResponses.default,
-    sender: "assistant",
-  };
+export const getMockHourlySales = async (merchantId, period) => {
+     await delay(600);
+     console.log(`Mock Fetch: Hourly Sales for ${merchantId}, period ${period}`);
+     return mockHourlySales[period] || mockHourlySales['Week'];
 };
 
-export const getDashboardData = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 300));
-  return mockDashboardData;
+export const getMockDailySales = async (merchantId, period) => {
+     await delay(600);
+     console.log(`Mock Fetch: Daily Sales for ${merchantId}, period ${period}`);
+     return mockDailySales[period] || mockDailySales['Week'];
 };
 
-export const getMerchants = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 200));
-  return mockMerchants;
+export const getMockTopItems = async (merchantId, period) => {
+    await delay();
+    console.log(`Mock Fetch: Top Items for ${merchantId}, period ${period}`);
+    // Return array of items for TopItemsTable
+    // Example: [{ name: 'Burger', category: 'Main', price: 9.00, orders: 87, trend: '+12.4%' }, ...]
+    return mockTopItems[period] || mockTopItems['Week'];
 };
+
+// --- Chat Mock Functions ---
+
+export const getMockChatResponse = async (message, merchantId, language) => {
+    await delay(1500); // Simulate AI thinking time
+    console.log(`Mock Fetch: Chat response for "${message}" (Merchant: ${merchantId}, Lang: ${language})`);
+    // Return a predefined response or simple logic based on keywords
+    // Structure should include text and potentially chart data reference
+    // Example: { text: "...", visualization: { type: 'bar', data: {...} } }
+    return mockChatResponse(message); // Function in mockChatResponses.js handles keyword logic
+};
+
+// --- Other Mock Functions ---
+
+export const getMockMerchants = async () => {
+    await delay(100);
+    console.log("Mock Fetch: Available Merchants");
+    return mockMerchants; // Return the list from mockMerchants.js
+}
+
+// TODO: Add mock functions for Notifications, Settings, AI Insights if needed for prototype

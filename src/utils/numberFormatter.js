@@ -1,58 +1,44 @@
-// src/utils/numberFormatter.js
-
 /**
- * Formats a number as currency.
- * @param {number} number The number to format.
- * @param {string} [locale] The locale to use for formatting (e.g., 'en-US', 'fr-FR'). Defaults to browser's locale.
- * @param {string} [currency] The currency code (e.g., 'USD', 'EUR'). Defaults to 'USD'.
- * @returns {string} The formatted currency string.
+ * Formats a number as currency (e.g., USD, MYR).
+ * TODO: Enhance to support different currency codes based on context/settings.
+ * For now, assumes a generic '$' prefix or MYR.
+ *
+ * @param {number} value - The number to format.
+ * @param {string} currency - Currency code (e.g., 'MYR', 'USD'). Defaults based on location context if available.
+ * @returns {string} Formatted currency string.
  */
-export function formatCurrency(number, locale = undefined, currency = 'USD') {
-  return new Intl.NumberFormat(locale, {
+export const formatCurrency = (value, currency = 'MYR') => {
+  // Basic formatting, enhance with locale awareness
+  const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: currency,
-  }).format(number);
-}
+    currency: currency, // Use MYR for Malaysia context or make dynamic
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+  // Intl might not support all codes perfectly, adjust prefix/suffix manually if needed
+  // Example simple override:
+  if (currency === 'MYR' && !formatter.format(value).includes('RM')) {
+      return `RM${value.toFixed(2)}`;
+  }
+  return formatter.format(value);
+};
 
 /**
- * Formats a number as a percentage.
- * @param {number} number The number to format (should be between 0 and 1).
- * @param {string} [locale] The locale to use for formatting. Defaults to browser's locale.
- * @returns {string} The formatted percentage string.
+ * Formats a number as a percentage string.
+ *
+ * @param {number} value - The decimal value (e.g., 0.125 for 12.5%).
+ * @returns {string} Formatted percentage string (e.g., "12.5%").
  */
-export function formatPercentage(number, locale = undefined) {
-  return new Intl.NumberFormat(locale, {
-    style: 'percent',
-  }).format(number);
-}
+export const formatPercentage = (value) => {
+  return `${(value * 100).toFixed(1)}%`;
+};
 
 /**
- * Formats a number with commas for thousands separators.
- * @param {number} number The number to format.
- * @param {string} [locale] The locale to use for formatting. Defaults to browser's locale.
- * @returns {string} The formatted number string.
+ * Formats a number with commas as thousands separators.
+ *
+ * @param {number} value - The number to format.
+ * @returns {string} Formatted number string.
  */
-export function formatNumber(number, locale = undefined) {
-  return new Intl.NumberFormat(locale).format(number);
-}
-
-/**
- * Formats a number with a fixed number of decimal places.
- * @param {number} number The number to format.
- * @param {number} [decimals=2] The number of decimal places to show.
- * @param {string} [locale] The locale to use for formatting. Defaults to browser's locale.
- * @returns {string} The formatted number string.
- */
-export function formatDecimal(number, decimals = 2, locale = undefined) {
-  return new Intl.NumberFormat(locale, {
-    minimumFractionDigits: decimals,
-    maximumFractionDigits: decimals,
-  }).format(number);
-}
-
-// Example usage (for demonstration purposes, not executed in this environment)
-// console.log(formatCurrency(1234.56)); // Output: $1,234.56 (or similar, depending on browser locale)
-// console.log(formatCurrency(1234.56, 'fr-FR', 'EUR')); // Output: 1 234,56 €
-// console.log(formatPercentage(0.75)); // Output: 75%
-// console.log(formatNumber(1234567)); // Output: 1,234,567
-// console.log(formatDecimal(12.3456, 3)); // Output: 12.346
+export const formatNumber = (value) => {
+  return value.toLocaleString('en-US');
+};

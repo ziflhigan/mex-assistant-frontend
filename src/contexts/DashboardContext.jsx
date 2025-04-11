@@ -1,4 +1,4 @@
-jsx
+
 import React, { createContext, useState } from 'react';
 
 const DashboardContext = createContext();
