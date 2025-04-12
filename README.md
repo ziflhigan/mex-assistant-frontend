@@ -1,4 +1,4 @@
-# MEX Assistant: AI-Powered Merchant Partner Assistant By Sudo_Chill
+# UM Hackathon 2025 Domain 3 Task 2 - MEX Assistant: AI-Powered Merchant Partner Assistant By Sudo_Chill
 
 <div align="center">
   <img src="./assets/mex-logo.png" alt="MEX Assistant Logo" width="200"/>
