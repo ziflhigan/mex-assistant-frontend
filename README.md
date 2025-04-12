@@ -10,18 +10,18 @@
 </div>
 
 ## 📋 Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Technologies Used](#technologies-used)
-- [Architecture](#architecture)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Integration](#api-integration)
-- [Future Enhancements](#future-enhancements)
-- [Team Members](#team-members)
-- [Acknowledgments](#acknowledgments)
+- [Overview]
+- [Features]
+- [Screenshots]
+- [Technologies Used]
+- [Architecture]
+- [Project Structure]
+- [Installation]
+- [Usage]
+- [API Integration]
+- [Future Enhancements]
+- [Team Members]
+- [Acknowledgments]
 
 ## 🌟 Overview
 
