@@ -1,74 +1,214 @@
-// src/components/chat/ChatVisualization.jsx
-import React from 'react';
-// import { Line, Bar } from 'react-chartjs-2';
-import { Line, Bar } from 'react-chartjs-2';
+import React, { useEffect, useRef } from 'react';
 import {
-  Chart as ChartJS,
+  Chart,
   CategoryScale,
   LinearScale,
-  BarElement,
   PointElement,
   LineElement,
+  BarElement,
   Title,
   Tooltip,
   Legend,
   Filler
 } from 'chart.js';
+import { Line, Bar } from 'react-chartjs-2';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  Filler
+// Register Chart.js components
+Chart.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler
 );
 
-const ChatVisualization = ({ data }) => {
-  if (!data) return null;
+const ChatVisualization = ({ type, chartType, data }) => {
+  const chartRef = useRef(null);
 
-  // 渲染折线图
-  if (data.chartType === 'line' && data.data) {
-    const chartData = {
-      labels: data.data.labels,
-      datasets: [{
-        label: data.data.seriesName || 'Data',
-        data: data.data.values,
-        borderColor: '#00b14f',
-        backgroundColor: 'rgba(0, 177, 79, 0.1)',
+  // Animation trigger when component mounts
+  useEffect(() => {
+    const element = document.getElementById(`chart-${data.title.replace(/\s+/g, '-').toLowerCase()}`);
+    if (element) {
+      element.classList.add('appear');
+    }
+  }, [data.title]);
+
+  if (type === 'chart') {
+    // Chart configuration
+    const chartConfig = {
+      labels: data.labels,
+      datasets: data.series.map(series => ({
+        label: series.name,
+        data: series.values,
+        borderColor: series.color,
+        backgroundColor: `${series.color}33`, // Add transparency for fill
         tension: 0.4,
-        fill: true,
-      }]
+        fill: chartType === 'line', // Only fill area under line charts
+        borderWidth: 2,
+        pointBackgroundColor: series.color,
+        pointRadius: 4,
+        pointHoverRadius: 6
+      }))
+    };
+
+    // Common options for all chart types
+    const commonOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: {
+        duration: 1000,
+        easing: 'easeOutQuart'
+      },
+      plugins: {
+        legend: {
+          display: data.series.length > 1,
+          position: 'top',
+          labels: {
+            usePointStyle: true,
+            padding: 20,
+            font: {
+              size: 12
+            }
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          titleFont: {
+            size: 14
+          },
+          bodyFont: {
+            size: 13
+          },
+          padding: 12,
+          cornerRadius: 6,
+          caretSize: 6
+        },
+        title: {
+          display: false
+        }
+      },
+      scales: {
+        x: {
+          grid: {
+            display: false
+          },
+          ticks: {
+            padding: 10,
+            font: {
+              size: 11
+            }
+          }
+        },
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(0, 0, 0, 0.05)'
+          },
+          ticks: {
+            padding: 10,
+            font: {
+              size: 11
+            }
+          }
+        }
+      }
+    };
+
+    // Specific options for chart types
+    const chartOptions = {
+      line: {
+        ...commonOptions,
+        plugins: {
+          ...commonOptions.plugins
+        }
+      },
+      bar: {
+        ...commonOptions,
+        plugins: {
+          ...commonOptions.plugins
+        },
+        borderRadius: 4,
+        maxBarThickness: 50
+      }
     };
 
     return (
-      <div className="chat-visualization">
-        <h4>{data.content}</h4>
-        <Line data={chartData} options={{ responsive: true, plugins: { legend: { display: false } } }} />
-      </div>
+        <div
+            id={`chart-${data.title.replace(/\s+/g, '-').toLowerCase()}`}
+            className="chart-container visualization-container"
+        >
+          <div className="visualization-header">
+            <h4>{data.title}</h4>
+          </div>
+          <div className="chart-wrapper">
+            {chartType === 'line' ? (
+                <Line
+                    ref={chartRef}
+                    data={chartConfig}
+                    options={chartOptions.line}
+                    height={220}
+                />
+            ) : (
+                <Bar
+                    ref={chartRef}
+                    data={chartConfig}
+                    options={chartOptions.bar}
+                    height={220}
+                />
+            )}
+          </div>
+        </div>
     );
   }
 
-  // 渲染表格
-  if (data.chartType === 'table' && data.data) {
-    const { columns, rows } = data.data;
+  if (type === 'table') {
     return (
-      <div className="chat-visualization">
-        <h4>{data.content}</h4>
-        <table>
-          <thead>
-            <tr>{columns.map((col, i) => <th key={i}>{col}</th>)}</tr>
-          </thead>
-          <tbody>
-            {rows.map((row, i) => (
-              <tr key={i}>{row.map((cell, j) => <td key={j}>{cell}</td>)}</tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+        <div className="table-container visualization-container">
+          <div className="visualization-header">
+            <h4>{data.title}</h4>
+          </div>
+          <div className="table-responsive">
+            <table className="data-table">
+              <thead>
+              <tr>
+                {data.columns.map((column, index) => (
+                    <th key={index}>{column}</th>
+                ))}
+              </tr>
+              </thead>
+              <tbody>
+              {data.rows.map((row, rowIndex) => (
+                  <tr key={rowIndex} className={rowIndex === 0 ? 'highlight-row' : ''}>
+                    {row.map((cell, cellIndex) => (
+                        <td key={cellIndex}>
+                          {/* Add color dot for first column of first cell */}
+                          {cellIndex === 0 && rowIndex < 5 ? (
+                              <div className="item-with-color">
+                          <span
+                              className="color-dot"
+                              style={{
+                                backgroundColor: rowIndex === 0
+                                    ? '#e74c3c' // Red for top item
+                                    : ['#f1c40f', '#3498db', '#2ecc71', '#9b59b6'][rowIndex - 1] || '#95a5a6'
+                              }}
+                          ></span>
+                                {cell}
+                              </div>
+                          ) : (
+                              cell
+                          )}
+                        </td>
+                    ))}
+                  </tr>
+              ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
     );
   }
 

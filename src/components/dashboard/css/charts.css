@@ -1,0 +1,348 @@
+/* Chart Container Styles */
+.chart-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.chart-container-full {
+    grid-column: 1 / -1;
+}
+
+.chart-container-inner {
+    position: relative;
+    width: 100%;
+}
+
+.canvas-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    padding: 10px 0;
+    transition: height 0.3s ease;
+}
+
+.expanded .canvas-container {
+    height: calc(100vh - 200px);
+    min-height: 400px;
+}
+
+/* Chart Header Styles */
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.chart-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--grab-dark-gray);
+    display: flex;
+    align-items: center;
+}
+
+.chart-title i {
+    margin-right: 10px;
+    color: var(--grab-green);
+}
+
+.chart-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.chart-actions button {
+    padding: 6px 12px;
+    border: none;
+    background-color: var(--grab-gray);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    color: var(--grab-dark-gray);
+}
+
+.chart-actions button i {
+    margin-right: 5px;
+}
+
+.chart-actions button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Chart Controls Styles */
+.chart-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.chart-toggle-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.prediction-toggle,
+.compare-toggle,
+.average-toggle,
+.peak-toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.prediction-toggle input[type="checkbox"],
+.compare-toggle input[type="checkbox"],
+.average-toggle input[type="checkbox"],
+.peak-toggle input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.toggle-label {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    color: var(--grab-dark-gray);
+}
+
+.toggle-label i {
+    margin-right: 5px;
+    color: var(--grab-green);
+}
+
+.chart-view-selector {
+    display: flex;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+}
+
+.view-button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #e0e0e0;
+}
+
+.view-button:last-child {
+    border-right: none;
+}
+
+.view-button i {
+    margin-right: 4px;
+}
+
+.view-button.active {
+    background-color: var(--grab-green);
+    color: white;
+}
+
+.view-button:not(.active):hover {
+    background-color: #e0e0e0;
+}
+
+/* Placeholder Styles */
+.chart-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    color: #888;
+}
+
+.chart-placeholder i {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+/* Data Point Details */
+.data-point-info,
+.timeslot-details,
+.day-details {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    max-width: 250px;
+    animation: slideIn 0.3s ease;
+}
+
+.close-info,
+.close-details {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    font-size: 18px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-info:hover,
+.close-details:hover {
+    color: #333;
+}
+
+.data-value,
+.detail-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--grab-dark-gray);
+    margin: 10px 0;
+}
+
+.data-point-info h4,
+.timeslot-details h4,
+.day-details h4 {
+    margin: 0 0 5px 0;
+    color: #555;
+    font-size: 16px;
+}
+
+.compare-info,
+.average-comparison,
+.daily-percent {
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.positive,
+.above-average {
+    color: var(--grab-green);
+    display: flex;
+    align-items: center;
+}
+
+.negative,
+.below-average {
+    color: #e74c3c;
+    display: flex;
+    align-items: center;
+}
+
+.positive i,
+.negative i {
+    margin-right: 3px;
+}
+
+/* Notes and Insights */
+.prediction-note,
+.peak-hour-insight {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #666;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: rgba(0, 177, 79, 0.05);
+    border-radius: 6px;
+    border-left: 3px solid var(--grab-green);
+}
+
+.prediction-note i,
+.peak-hour-insight i {
+    color: var(--grab-green);
+    font-size: 14px;
+}
+
+.insight-tip {
+    margin: 5px 0 0 0;
+    font-size: 11px;
+    color: #888;
+}
+
+/* Tags */
+.detail-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.detail-tag.best,
+.detail-tag.peak {
+    background-color: rgba(0, 177, 79, 0.1);
+    color: var(--grab-green);
+}
+
+.detail-tag.worst,
+.detail-tag.slow {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+}
+
+/* Loading State */
+.chart-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 100%;
+}
+
+/* Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .chart-controls {
+        flex-direction: column;
+    }
+
+    .chart-toggle-group {
+        margin-bottom: 10px;
+    }
+
+    .chart-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .chart-title {
+        margin-bottom: 10px;
+    }
+
+    .data-point-info,
+    .timeslot-details,
+    .day-details {
+        right: 10px;
+        left: 10px;
+        max-width: unset;
+    }
+}

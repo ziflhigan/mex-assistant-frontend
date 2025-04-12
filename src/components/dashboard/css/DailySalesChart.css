@@ -1,0 +1,164 @@
+.daily-sales-chart {
+    position: relative;
+    width: 100%;
+  }
+  
+  .daily-sales-chart.expanded {
+    height: calc(100vh - 200px);
+  }
+  
+  .chart-options {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+  }
+  
+  .average-toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .average-toggle input {
+    margin-right: 8px;
+  }
+  
+  .toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .toggle-label i {
+    color: #f39c12;
+  }
+  
+  .chart-loading {
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .chart-placeholder {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    text-align: center;
+  }
+  
+  .chart-placeholder i {
+    font-size: 40px;
+    color: #ddd;
+    margin-bottom: 15px;
+  }
+  
+  .day-details {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    z-index: 10;
+    min-width: 180px;
+    max-width: 250px;
+    border-left: 4px solid #9b59b6;
+  }
+  
+  .close-details {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #888;
+  }
+  
+  .day-details h4 {
+    margin: 0 0 10px 0;
+    color: var(--grab-dark-gray);
+    font-size: 1.1rem;
+  }
+  
+  .detail-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 5px 0;
+    color: var(--grab-dark-gray);
+  }
+  
+  .detail-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 5px;
+  }
+  
+  .detail-tag.best {
+    background-color: rgba(0, 177, 79, 0.1);
+    color: var(--grab-green);
+  }
+  
+  .detail-tag.worst {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+  }
+  
+  .average-comparison {
+    margin-top: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .above-average {
+    color: var(--grab-green);
+  }
+  
+  .below-average {
+    color: #e74c3c;
+  }
+  
+  .canvas-container {
+    width: 100%;
+    position: relative;
+  }
+  
+  .chart-insights {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #666;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .insight-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .insight-item i {
+    color: #f39c12;
+  }
+  
+  .insight-item strong {
+    color: var(--grab-dark-gray);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .day-details {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }

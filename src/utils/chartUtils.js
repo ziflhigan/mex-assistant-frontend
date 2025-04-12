@@ -1,71 +1,156 @@
-/**
- * Defines default options for Chart.js charts for consistency.
- *
- * @param {object} customOptions - Options to merge with defaults.
- * @returns {object} Merged chart options.
- */
-export const getDefaultChartOptions = (customOptions = {}) => {
-  const defaultOptions = {
-    responsive: true,
-    maintainAspectRatio: false, // Allow charts to fill container height
-    plugins: {
-      legend: {
-        display: false, // Often legends are not needed or custom ones are better
-        position: 'top',
-      },
-      tooltip: {
-        enabled: true,
-        mode: 'index',
-        intersect: false,
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: { color: '#666' }, // Example: style ticks
-        grid: { color: '#eee' }, // Example: style grid lines
-      },
-      x: {
-        ticks: { color: '#666' },
-        grid: { display: false }, // Often hide x-axis grid lines
-      },
-    },
-    // Add more default styling options as needed
-    // ...
-  };
+// src/utils/chartUtils.js
 
-  // Deep merge custom options (basic example, consider lodash/merge for complex merge)
-  return { ...defaultOptions, ...customOptions };
+/**
+ * Enhanced color palette for charts
+ */
+export const chartColors = {
+  primary: '#00b14f', // Grab green
+  secondary: '#3498db', // Blue
+  accent1: '#e74c3c', // Red
+  accent2: '#f1c40f', // Yellow
+  accent3: '#9b59b6', // Purple
+  accent4: '#2ecc71', // Green
+  accent5: '#e67e22', // Orange
+  background: 'rgba(0, 177, 79, 0.1)', // Light green background
+  gridLines: 'rgba(0, 0, 0, 0.1)'
 };
 
 /**
- * Processes raw data (e.g., from mockService) into a format suitable for Chart.js datasets.
- * TODO: Implement specific data transformation logic based on chart type and data source.
- *
- * @param {Array<object>} rawData - Array of data points.
- * @param {string} labelField - The field in rawData for chart labels (x-axis).
- * @param {string} valueField - The field in rawData for chart values (y-axis).
- * @param {string} datasetLabel - Label for the dataset.
- * @returns {object} Object containing 'labels' and 'datasets' arrays for Chart.js.
+ * Generate a gradient for chart backgrounds
+ * @param {CanvasRenderingContext2D} ctx - The canvas context
+ * @param {string} startColor - Start color of gradient
+ * @param {string} endColor - End color of gradient
+ * @returns {CanvasGradient} A canvas gradient object
  */
-export const formatDataForChart = (rawData, labelField, valueField, datasetLabel) => {
-  // Placeholder implementation - real implementation depends on data structure
-  const labels = rawData.map(item => item[labelField]);
-  const data = rawData.map(item => item[valueField]);
+export const createGradient = (ctx, startColor, endColor) => {
+  const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+  gradient.addColorStop(0, startColor);
+  gradient.addColorStop(1, endColor);
+  return gradient;
+};
 
+/**
+ * Get default chart options to ensure consistent styling
+ * @param {boolean} isExpanded - Whether the chart is in expanded view
+ * @returns {Object} Chart.js options object
+ */
+export const getDefaultChartOptions = (isExpanded = false) => {
   return {
-    labels,
-    datasets: [
-      {
-        label: datasetLabel,
-        data,
-        // Add default styling (borderColor, backgroundColor) here or pass dynamically
-        borderColor: '#00b14f', // Example Grab Green
-        backgroundColor: 'rgba(0, 177, 79, 0.1)',
-        tension: 0.4, // For line charts
-        fill: true, // For line charts area fill
+    responsive: true,
+    maintainAspectRatio: !isExpanded,
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          usePointStyle: true,
+          padding: 15,
+          font: {
+            size: 12,
+            family: "'Segoe UI', sans-serif"
+          }
+        }
       },
-      // Add more datasets if needed
-    ],
+      tooltip: {
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        titleFont: {
+          size: 14,
+          weight: 'bold'
+        },
+        bodyFont: {
+          size: 13
+        },
+        padding: 10,
+        cornerRadius: 6,
+        usePointStyle: true
+      }
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          font: {
+            size: 11
+          },
+          padding: 5,
+          color: '#666'
+        }
+      },
+      y: {
+        beginAtZero: true,
+        grid: {
+          color: 'rgba(0, 0, 0, 0.05)',
+          drawBorder: false
+        },
+        ticks: {
+          font: {
+            size: 11
+          },
+          padding: 8,
+          color: '#666'
+        }
+      }
+    },
+    animation: {
+      duration: 1000,
+      easing: 'easeOutQuart'
+    },
+    elements: {
+      point: {
+        radius: 3,
+        hoverRadius: 5
+      },
+      line: {
+        tension: 0.4
+      }
+    }
   };
+};
+
+/**
+ * Generate test data for chart development
+ * @param {string} type - Type of data to generate (daily, hourly, etc.)
+ * @param {number} points - Number of data points
+ * @returns {Array} Array of data points
+ */
+export const generateTestData = (type, points = 7) => {
+  switch (type) {
+    case 'sales-trend':
+      return Array.from({ length: points }, (_, i) => ({
+        date: new Date(Date.now() - (points - i - 1) * 86400000).toISOString(),
+        sales: Math.floor(800 + Math.random() * 500),
+        orders: Math.floor(30 + Math.random() * 20)
+      }));
+
+    case 'hourly-sales':
+      return Array.from({ length: 24 }, (_, i) => ({
+        hour: i,
+        sales: Math.floor(i >= 6 && i <= 20
+            ? 100 + Math.random() * 200 * (i >= 11 && i <= 14 ? 1.5 : 1)
+            : 20 + Math.random() * 80)
+      }));
+
+    case 'daily-sales':
+      return [
+        { day: 'Monday', sales: Math.floor(900 + Math.random() * 300) },
+        { day: 'Tuesday', sales: Math.floor(800 + Math.random() * 300) },
+        { day: 'Wednesday', sales: Math.floor(1000 + Math.random() * 300) },
+        { day: 'Thursday', sales: Math.floor(1100 + Math.random() * 300) },
+        { day: 'Friday', sales: Math.floor(1300 + Math.random() * 300) },
+        { day: 'Saturday', sales: Math.floor(1200 + Math.random() * 300) },
+        { day: 'Sunday', sales: Math.floor(800 + Math.random() * 300) }
+      ];
+
+    default:
+      return [];
+  }
+};
+
+export default {
+  chartColors,
+  createGradient,
+  getDefaultChartOptions,
+  generateTestData
 };

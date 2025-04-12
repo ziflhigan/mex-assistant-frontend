@@ -25,7 +25,7 @@
       "login": "Log Masuk",
       "logout": "Log Keluar",
       "signup": "Daftar",
-      "email": "Emel",
+      "email": "E-mel",
       "password": "Kata Laluan",
       "forgotPassword": "Lupa Kata Laluan?",
       "rememberMe": "Ingat Saya"
@@ -45,7 +45,7 @@
       "saveSuccess": "Tetapan berjaya disimpan",
       "personal": "Maklumat Peribadi",
       "business": "Tetapan Perniagaan",
-      "notifications": "Pemberitahuan",
+      "notifications": "Notifikasi",
       "preferences": "Keutamaan",
       
       "name": "Nama Penuh",
@@ -65,32 +65,32 @@
       "taxRate": "Kadar Cukai",
       "deliveryRadius": "Radius Penghantaran",
       
-      "notificationPreferences": "Keutamaan Pemberitahuan",
-      "email": "Pemberitahuan E-mel",
-      "push": "Pemberitahuan Push",
-      "salesAlerts": "Makluman Jualan",
-      "lowStockAlerts": "Makluman Stok Rendah",
-      "orderNotifications": "Pemberitahuan Pesanan",
+      "notificationPreferences": "Keutamaan Notifikasi",
+      "email": "Notifikasi E-mel",
+      "push": "Notifikasi Push",
+      "salesAlerts": "Amaran Jualan",
+      "lowStockAlerts": "Amaran Stok Rendah",
+      "orderNotifications": "Notifikasi Pesanan",
       "customerReviews": "Ulasan Pelanggan",
       
       "theme": "Tema",
-      "lightTheme": "Tema Terang",
+      "lightTheme": "Tema Cerah",
       "darkTheme": "Tema Gelap",
       "systemTheme": "Tema Sistem",
-      "fontSize": "Saiz Fon",
+      "fontSize": "Saiz Font",
       "small": "Kecil",
       "medium": "Sederhana",
       "large": "Besar",
       "highContrast": "Mod Kontras Tinggi",
       "compactMode": "Mod Padat",
-      "autoRefresh": "Segar Semula Automatik",
-      "refreshInterval": "Selang Segar Semula",
+      "autoRefresh": "Kemaskini Automatik",
+      "refreshInterval": "Selang Kemaskini",
       
       "businessTypes": {
         "restaurant": "Restoran",
         "cafe": "Kafe",
         "foodStall": "Gerai Makanan",
-        "bakery": "Kedai Roti"
+        "bakery": "Bakeri"
       },
       
       "currencies": {
@@ -100,16 +100,16 @@
       },
       
       "timezones": {
-        "utc": "UTC (Waktu Universal Terkoordinasi)",
+        "utc": "UTC (Masa Universal Berkoordinat)",
         "jakarta": "Jakarta (GMT+7)",
         "kualaLumpur": "Kuala Lumpur (GMT+8)",
         "singapore": "Singapura (GMT+8)"
       },
       
       "tooltips": {
-        "highContrast": "Meningkatkan kontras untuk penglihatan yang lebih baik",
-        "compactMode": "Mengurangkan ruang dalam antara muka",
-        "autoRefresh": "Menyegarkan data secara automatik pada selang masa tertentu",
+        "highContrast": "Meningkatkan kontras untuk kebolehlihatan yang lebih baik",
+        "compactMode": "Mengurangkan jarak dalam antara muka",
+        "autoRefresh": "Kemaskini data secara automatik pada selang tertentu",
         "deliveryRadius": "Jarak penghantaran maksimum dalam kilometer",
         "taxRate": "Kadar cukai lalai untuk transaksi"
       }
@@ -137,11 +137,195 @@
     },
     "homePage": {
       "welcome": "Selamat Datang ke Aplikasi Kami",
-      "intro": "Ini adalah contoh bagaimana untuk menyediakan sokongan pelbagai bahasa."
+      "intro": "Ini adalah contoh bagaimana mengatur sokongan pelbagai bahasa."
     },
     "settingsPage": {
       "header": "Tetapan",
       "language": "Tukar Bahasa"
+    },
+    "dashboard": {
+        "title": "Papan Pemuka Peniaga",
+        "lastUpdated": "Terakhir dikemaskini: {{time}}",
+        "loading": "Memuatkan wawasan perniagaan anda...",
+        "error": {
+            "title": "Ralat",
+            "retry": "Cuba Lagi"
+        },
+        "actions": {
+            "export": "Eksport Data",
+            "refresh": "Kemaskini",
+            "expand": "Kembangkan",
+            "collapse": "Ciutkan"
+        },
+        "stats": {
+            "title": "Statistik Gambaran Keseluruhan",
+            "totalSales": {
+                "title": "Jumlah Jualan",
+                "info": "Jumlah pendapatan dari semua pesanan"
+            },
+            "totalOrders": {
+                "title": "Jumlah Pesanan",
+                "info": "Bilangan transaksi yang selesai"
+            },
+            "averageOrderValue": {
+                "title": "Purata Nilai Pesanan",
+                "info": "Purata pendapatan setiap transaksi"
+            },
+            "preparationTime": {
+                "title": "Purata Masa Penyediaan",
+                "info": "Masa dari pesanan hingga pengambilan"
+            },
+            "comparison": {
+                "since": "sejak {{period}}"
+            }
+        },
+        "charts": {
+            "salesTrend": {
+                "title": "Trend Jualan",
+                "noData": "Tiada data trend tersedia untuk tempoh yang dipilih.",
+                "predictionNote": "Ramalan berdasarkan trend terkini dan mungkin tidak menggambarkan prestasi sebenar pada masa hadapan.",
+                "views": {
+                    "sales": "Jualan",
+                    "orders": "Pesanan",
+                    "both": "Kedua-dua"
+                },
+                "tooltips": {
+                    "sales": "Tunjukkan Trend Jualan",
+                    "orders": "Tunjukkan Trend Pesanan",
+                    "both": "Tunjukkan Trend Jualan dan Pesanan"
+                },
+                "togglePrediction": "Tukar Ramalan Trend",
+                "showPrediction": "Tunjukkan Ramalan",
+                "toggleComparison": "Tukar Perbandingan Tempoh Sebelum",
+                "comparePeriod": "Bandingkan Tempoh",
+                "previous": "Sebelum",
+                "vsPrevious": "berbanding sebelum"
+            },
+            "dailySales": {
+                "title": "Jualan Harian",
+                "noData": "Tiada data jualan harian tersedia.",
+                "clickForDetails": "Klik pada bar untuk butiran harian.",
+                "bestDay": "{{day}} biasanya hari dengan prestasi terbaik anda",
+                "clickForDetails": "Klik pada bar untuk butiran harian"
+            },
+            "hourlySales": {
+                "title": "Jualan Mengikut Jam",
+                "noData": "Tiada data jualan mengikut jam tersedia",
+                "barView": "Tukar ke Paparan Bar",
+                "bar": "Bar",
+                "trendView": "Tukar ke Paparan Trend",
+                "togglePeaks": "Tukar penandaan waktu puncak",
+                "highlightPeaks": "Serlahkan Puncak"
+            },
+            "trend": "trend"
+        },
+        "topItems": {
+            "title": "Item Terlaris",
+            "search": "Cari item...",
+            "category": "Kategori:",
+            "noData": {
+                "title": "Tiada data item tersedia",
+                "subtitle": "Apabila anda mula menjual, item terlaris anda akan muncul di sini."
+            },
+            "summary": {
+                "topItem": "Item Teratas",
+                "totalOrders": "Jumlah Pesanan",
+                "totalRevenue": "Jumlah Pendapatan",
+                "orders": "pesanan",
+                "items": "item",
+                "average": "Purata: {{value}}/item"
+            }
+        },
+        "aiInsights": {
+            "title": "Wawasan Berasaskan AI",
+            "viewAll": "Lihat Semua Wawasan",
+            "noInsights": {
+                "title": "Tiada wawasan tersedia pada masa ini.",
+                "subtitle": "Periksa semula nanti untuk cadangan berasaskan AI."
+            },
+            "actions": {
+                "takeAction": "Ambil Tindakan",
+                "viewDetails": "Lihat Butiran",
+                "scheduleTask": "Jadualkan Tugas",
+                "dismiss": "Abaikan"
+            },
+            "severity": {
+                "high": "tinggi",
+                "medium": "sederhana",
+                "low": "rendah"
+            }
+        }
+    },
+    "notifications": {
+        "title": "Pemberitahuan",
+        "empty": "Tiada pemberitahuan",
+        "actions": {
+            "markAllRead": "Tandakan Semua Sebagai Dibaca",
+            "clearAll": "Kosongkan Semua",
+            "markAsRead": "Tandakan Sebagai Dibaca",
+            "delete": "Padam"
+        },
+        "search": {
+            "placeholder": "Cari pemberitahuan..."
+        },
+        "filters": {
+            "categories": {
+                "all": "Semua Kategori",
+                "orders": "Pesanan",
+                "inventory": "Inventori",
+                "payments": "Pembayaran"
+            },
+            "status": {
+                "all": "Semua Status",
+                "read": "Dibaca",
+                "unread": "Belum Dibaca"
+            }
+        },
+        "sort": {
+            "byDate": "Susun Mengikut Tarikh",
+            "byPriority": "Susun Mengikut Keutamaan",
+            "toggleOrder": "Tukar Tertib Susunan"
+        },
+        "dummy": {
+            "highSales": {
+                "title": "Pemberitahuan Jualan Tinggi",
+                "message": "Jualan anda meningkat 25% berbanding semalam"
+            },
+            "newFeature": {
+                "title": "Ciri Baru",
+                "message": "Jom lihat papan pemuka analitik baru kami"
+            },
+            "lowStock": {
+                "title": "Amaran Stok Rendah",
+                "message": "Item \"Burger Istimewa\" hampir kehabisan stok"
+            },
+            "paymentFailed": {
+                "title": "Pembayaran Gagal",
+                "message": "Pembayaran untuk pesanan #1234 telah gagal. Sila semak butiran pembayaran."
+            },
+            "newOrder": {
+                "title": "Pesanan Baru",
+                "message": "Anda telah menerima pesanan baru #5678 bernilai $150.00"
+            },
+            "refundRequest": {
+                "title": "Permintaan Bayaran Balik",
+                "message": "Pelanggan telah meminta bayaran balik untuk pesanan #9012"
+            },
+            "realtime": {
+                "newOrder": {
+                    "title": "Pemberitahuan Pesanan Baru",
+                    "message": "Pesanan baru telah dibuat di kedai anda"
+                },
+                "lowStock": {
+                    "title": "Pemberitahuan Inventori",
+                    "message": "Beberapa item hampir kehabisan stok"
+                },
+                "payment": {
+                    "title": "Pemberitahuan Pembayaran",
+                    "message": "Pembayaran untuk pesanan terbaru anda telah diproses"
+                }
+            }
+        }
     }
-  }
+}
   
