@@ -48,6 +48,7 @@ MEX Assistant leverages powerful data analytics, machine learning, and a convers
 - **Sales trend visualization** - Interactive charts showing sales and order patterns
 - **Hourly and daily sales breakdown** - Identify peak business hours and days
 - **Top selling items analysis** - Track best-performing products
+- **AI insight report** - Obtain the recommendation and alert timely 
 
 ### AI-Powered Insights
 - **Personalized business recommendations** - Custom guidance based on merchant data
