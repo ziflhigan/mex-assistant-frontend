@@ -1,1 +1,147 @@
-{}
+{
+    "common": {
+      "loading": "กำลังโหลด...",
+      "error": "เกิดข้อผิดพลาด",
+      "retry": "ลองอีกครั้ง",
+      "save": "บันทึก",
+      "cancel": "ยกเลิก",
+      "delete": "ลบ",
+      "edit": "แก้ไข",
+      "submit": "ส่ง",
+      "search": "ค้นหา",
+      "filter": "กรอง",
+      "sort": "เรียง",
+      "clear": "ล้าง",
+      "close": "ปิด"
+    },
+    "nav": {
+      "home": "หน้าแรก",
+      "settings": "ตั้งค่า",
+      "profile": "โปรไฟล์",
+      "chat": "แชท",
+      "dashboard": "แดชบอร์ด"
+    },
+    "auth": {
+      "login": "เข้าสู่ระบบ",
+      "logout": "ออกจากระบบ",
+      "signup": "สมัครสมาชิก",
+      "email": "อีเมล",
+      "password": "รหัสผ่าน",
+      "forgotPassword": "ลืมรหัสผ่าน?",
+      "rememberMe": "จดจำฉัน"
+    },
+    "chat": {
+      "sendMessage": "ส่งข้อความ",
+      "typeMessage": "พิมพ์ข้อความของคุณ...",
+      "attachFile": "แนบไฟล์",
+      "newChat": "แชทใหม่",
+      "deleteChat": "ลบแชท",
+      "clearHistory": "ล้างประวัติ",
+      "downloadChat": "ดาวน์โหลดแชท"
+    },
+    "settings": {
+      "title": "ตั้งค่า",
+      "subtitle": "จัดการการตั้งค่าและค่าการตั้งค่าบัญชีของคุณ",
+      "saveSuccess": "บันทึกการตั้งค่าสำเร็จ",
+      "personal": "ข้อมูลส่วนตัว",
+      "business": "ตั้งค่าธุรกิจ",
+      "notifications": "การแจ้งเตือน",
+      "preferences": "การกำหนดค่า",
+      
+      "name": "ชื่อ-นามสกุล",
+      "email": "อีเมล",
+      "phone": "เบอร์โทรศัพท์",
+      "language": "ภาษา",
+      "timezone": "เขตเวลา",
+      
+      "businessInfo": "ข้อมูลธุรกิจ",
+      "businessName": "ชื่อธุรกิจ",
+      "businessType": "ประเภทธุรกิจ",
+      "address": "ที่อยู่ธุรกิจ",
+      "operatingHours": "เวลาทำการ",
+      "openingTime": "เวลาเปิด",
+      "closingTime": "เวลาปิด",
+      "currency": "สกุลเงิน",
+      "taxRate": "อัตราภาษี",
+      "deliveryRadius": "รัศมีการจัดส่ง",
+      
+      "notificationPreferences": "การตั้งค่าการแจ้งเตือน",
+      "email": "การแจ้งเตือนทางอีเมล",
+      "push": "การแจ้งเตือนแบบพุช",
+      "salesAlerts": "การแจ้งเตือนยอดขาย",
+      "lowStockAlerts": "การแจ้งเตือนสินค้าใกล้หมด",
+      "orderNotifications": "การแจ้งเตือนคำสั่งซื้อ",
+      "customerReviews": "รีวิวจากลูกค้า",
+      
+      "theme": "ธีม",
+      "lightTheme": "ธีมสว่าง",
+      "darkTheme": "ธีมมืด",
+      "systemTheme": "ธีมระบบ",
+      "fontSize": "ขนาดตัวอักษร",
+      "small": "เล็ก",
+      "medium": "กลาง",
+      "large": "ใหญ่",
+      "highContrast": "โหมดความคมชัดสูง",
+      "compactMode": "โหมดกะทัดรัด",
+      "autoRefresh": "รีเฟรชอัตโนมัติ",
+      "refreshInterval": "ช่วงเวลารีเฟรช",
+      
+      "businessTypes": {
+        "restaurant": "ร้านอาหาร",
+        "cafe": "คาเฟ่",
+        "foodStall": "แผงลอยอาหาร",
+        "bakery": "ร้านเบเกอรี่"
+      },
+      
+      "currencies": {
+        "idr": "IDR (รูเปียห์อินโดนีเซีย)",
+        "myr": "MYR (ริงกิตมาเลเซีย)",
+        "sgd": "SGD (ดอลลาร์สิงคโปร์)"
+      },
+      
+      "timezones": {
+        "utc": "UTC (เวลาสากลเชิงพิกัด)",
+        "jakarta": "จาการ์ตา (GMT+7)",
+        "kualaLumpur": "กัวลาลัมเปอร์ (GMT+8)",
+        "singapore": "สิงคโปร์ (GMT+8)"
+      },
+      
+      "tooltips": {
+        "highContrast": "เพิ่มความคมชัดเพื่อการมองเห็นที่ดีขึ้น",
+        "compactMode": "ลดระยะห่างในอินเตอร์เฟซ",
+        "autoRefresh": "รีเฟรชข้อมูลอัตโนมัติตามช่วงเวลาที่กำหนด",
+        "deliveryRadius": "ระยะทางการจัดส่งสูงสุดเป็นกิโลเมตร",
+        "taxRate": "อัตราภาษีเริ่มต้นสำหรับธุรกรรม"
+      }
+    },
+    "profile": {
+      "title": "โปรไฟล์",
+      "editProfile": "แก้ไขโปรไฟล์",
+      "name": "ชื่อ",
+      "bio": "ประวัติ",
+      "location": "ตำแหน่งที่ตั้ง",
+      "website": "เว็บไซต์",
+      "saveChanges": "บันทึกการเปลี่ยนแปลง"
+    },
+    "errors": {
+      "required": "จำเป็นต้องกรอกข้อมูลนี้",
+      "invalidEmail": "อีเมลไม่ถูกต้อง",
+      "passwordLength": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร",
+      "networkError": "เกิดข้อผิดพลาดเครือข่าย โปรดตรวจสอบการเชื่อมต่อของคุณ",
+      "unknownError": "เกิดข้อผิดพลาดที่ไม่ทราบสาเหตุ"
+    },
+    "dates": {
+      "today": "วันนี้",
+      "yesterday": "เมื่อวาน",
+      "tomorrow": "พรุ่งนี้"
+    },
+    "homePage": {
+      "welcome": "ยินดีต้อนรับสู่แอปพลิเคชันของเรา",
+      "intro": "นี่คือตัวอย่างวิธีการตั้งค่าการรองรับหลายภาษา"
+    },
+    "settingsPage": {
+      "header": "ตั้งค่า",
+      "language": "เปลี่ยนภาษา"
+    }
+}
+  

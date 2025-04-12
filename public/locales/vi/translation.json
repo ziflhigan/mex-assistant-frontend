@@ -1,1 +1,147 @@
-{}
+{
+    "common": {
+      "loading": "Đang tải...",
+      "error": "Đã xảy ra lỗi",
+      "retry": "Thử lại",
+      "save": "Lưu",
+      "cancel": "Hủy",
+      "delete": "Xóa",
+      "edit": "Sửa",
+      "submit": "Gửi",
+      "search": "Tìm kiếm",
+      "filter": "Lọc",
+      "sort": "Sắp xếp",
+      "clear": "Xóa",
+      "close": "Đóng"
+    },
+    "nav": {
+      "home": "Trang chủ",
+      "settings": "Cài đặt",
+      "profile": "Hồ sơ",
+      "chat": "Trò chuyện",
+      "dashboard": "Bảng điều khiển"
+    },
+    "auth": {
+      "login": "Đăng nhập",
+      "logout": "Đăng xuất",
+      "signup": "Đăng ký",
+      "email": "Email",
+      "password": "Mật khẩu",
+      "forgotPassword": "Quên mật khẩu?",
+      "rememberMe": "Ghi nhớ tôi"
+    },
+    "chat": {
+      "sendMessage": "Gửi tin nhắn",
+      "typeMessage": "Nhập tin nhắn của bạn...",
+      "attachFile": "Đính kèm tệp",
+      "newChat": "Cuộc trò chuyện mới",
+      "deleteChat": "Xóa cuộc trò chuyện",
+      "clearHistory": "Xóa lịch sử",
+      "downloadChat": "Tải xuống cuộc trò chuyện"
+    },
+    "settings": {
+      "title": "Cài đặt",
+      "subtitle": "Quản lý cài đặt và tùy chọn tài khoản của bạn",
+      "saveSuccess": "Đã lưu cài đặt thành công",
+      "personal": "Thông tin cá nhân",
+      "business": "Cài đặt doanh nghiệp",
+      "notifications": "Thông báo",
+      "preferences": "Tùy chọn",
+      
+      "name": "Họ và tên",
+      "email": "Địa chỉ email",
+      "phone": "Số điện thoại",
+      "language": "Ngôn ngữ",
+      "timezone": "Múi giờ",
+      
+      "businessInfo": "Thông tin doanh nghiệp",
+      "businessName": "Tên doanh nghiệp",
+      "businessType": "Loại hình doanh nghiệp",
+      "address": "Địa chỉ doanh nghiệp",
+      "operatingHours": "Giờ hoạt động",
+      "openingTime": "Giờ mở cửa",
+      "closingTime": "Giờ đóng cửa",
+      "currency": "Tiền tệ",
+      "taxRate": "Thuế suất",
+      "deliveryRadius": "Bán kính giao hàng",
+      
+      "notificationPreferences": "Tùy chọn thông báo",
+      "email": "Thông báo qua email",
+      "push": "Thông báo đẩy",
+      "salesAlerts": "Cảnh báo doanh số",
+      "lowStockAlerts": "Cảnh báo hàng tồn kho thấp",
+      "orderNotifications": "Thông báo đơn hàng",
+      "customerReviews": "Đánh giá khách hàng",
+      
+      "theme": "Giao diện",
+      "lightTheme": "Giao diện sáng",
+      "darkTheme": "Giao diện tối",
+      "systemTheme": "Giao diện hệ thống",
+      "fontSize": "Cỡ chữ",
+      "small": "Nhỏ",
+      "medium": "Vừa",
+      "large": "Lớn",
+      "highContrast": "Chế độ tương phản cao",
+      "compactMode": "Chế độ thu gọn",
+      "autoRefresh": "Tự động làm mới",
+      "refreshInterval": "Khoảng thời gian làm mới",
+      
+      "businessTypes": {
+        "restaurant": "Nhà hàng",
+        "cafe": "Quán cà phê",
+        "foodStall": "Quầy ăn",
+        "bakery": "Tiệm bánh"
+      },
+      
+      "currencies": {
+        "idr": "IDR (Rupiah Indonesia)",
+        "myr": "MYR (Ringgit Malaysia)",
+        "sgd": "SGD (Đô la Singapore)"
+      },
+      
+      "timezones": {
+        "utc": "UTC (Giờ phối hợp quốc tế)",
+        "jakarta": "Jakarta (GMT+7)",
+        "kualaLumpur": "Kuala Lumpur (GMT+8)",
+        "singapore": "Singapore (GMT+8)"
+      },
+      
+      "tooltips": {
+        "highContrast": "Tăng độ tương phản để dễ nhìn hơn",
+        "compactMode": "Giảm khoảng cách trong giao diện",
+        "autoRefresh": "Tự động làm mới dữ liệu theo khoảng thời gian",
+        "deliveryRadius": "Khoảng cách giao hàng tối đa tính bằng kilômét",
+        "taxRate": "Thuế suất mặc định cho giao dịch"
+      }
+    },
+    "profile": {
+      "title": "Hồ sơ",
+      "editProfile": "Chỉnh sửa hồ sơ",
+      "name": "Tên",
+      "bio": "Tiểu sử",
+      "location": "Địa điểm",
+      "website": "Trang web",
+      "saveChanges": "Lưu thay đổi"
+    },
+    "errors": {
+      "required": "Trường này là bắt buộc",
+      "invalidEmail": "Địa chỉ email không hợp lệ",
+      "passwordLength": "Mật khẩu phải có ít nhất 8 ký tự",
+      "networkError": "Lỗi mạng. Vui lòng kiểm tra kết nối của bạn",
+      "unknownError": "Đã xảy ra lỗi không xác định"
+    },
+    "dates": {
+      "today": "Hôm nay",
+      "yesterday": "Hôm qua",
+      "tomorrow": "Ngày mai"
+    },
+    "homePage": {
+      "welcome": "Chào mừng đến với ứng dụng của chúng tôi",
+      "intro": "Đây là ví dụ về cách thiết lập hỗ trợ đa ngôn ngữ"
+    },
+    "settingsPage": {
+      "header": "Cài đặt",
+      "language": "Thay đổi ngôn ngữ"
+    }
+  }
+  
