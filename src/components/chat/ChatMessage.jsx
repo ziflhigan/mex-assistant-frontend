@@ -1,14 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import ChatVisualization from './ChatVisualization';
 import ChatMetrics from './ChatMetrics';
 import ChatInsights from './ChatInsights.jsx';
-import {getRelativeTime} from "../../utils/dateFormatter.js";
+import { getRelativeTime } from '../../utils/dateFormatter.js';
 
-// Enhanced ChatMessage component that supports various message types
+/**
+ * Renders a single message bubble in the chat interface.
+ * It dynamically displays different content types and renders
+ * the main text content using Markdown.
+ *
+ * @param {object} props - The component props.
+ * @param {object} props.message - The message object to render.
+ * // ... other prop descriptions
+ */
 const ChatMessage = ({ message }) => {
     const {
         sender,
-        type,
         content,
         visualization,
         metrics,
@@ -19,13 +29,10 @@ const ChatMessage = ({ message }) => {
 
     const isUser = sender === 'user';
     const messageClass = `chat-message ${isUser ? 'user' : 'assistant'}`;
-
-    // Format relative time (e.g., "2 minutes ago")
-    const formattedTime = getRelativeTime(new Date(timestamp));
+    const formattedTime = timestamp ? getRelativeTime(new Date(timestamp)) : '';
 
     return (
         <div className={messageClass} data-testid={`${sender}-message`}>
-            {/* Avatar for assistant messages */}
             {!isUser && (
                 <div className="message-avatar">
                     <div className="avatar-icon">
@@ -35,10 +42,14 @@ const ChatMessage = ({ message }) => {
             )}
 
             <div className="message-content">
-                {/* Message text content */}
+                {/* Render simple text content if present using ReactMarkdown */}
                 {content && (
                     <div className="message-text">
-                        {content}
+                        {/* --- THIS IS THE CHANGE --- */}
+                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                            {content}
+                        </ReactMarkdown>
+                        {/* --- END CHANGE --- */}
                     </div>
                 )}
 
@@ -72,20 +83,41 @@ const ChatMessage = ({ message }) => {
                     <div className="message-tips">
                         {tips.map((tip, index) => (
                             <div key={index} className="tip">
-                                <i className={`fas fa-${tip.icon}`}></i>
-                                <span>{tip.text}</span>
+                                {tip.icon && <i className={`fas fa-${tip.icon} tip-icon`}></i>}
+                                {/* Use ReactMarkdown here too if tips might contain Markdown */}
+                                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                    {tip.text}
+                                </ReactMarkdown>
                             </div>
                         ))}
                     </div>
                 )}
 
+
                 {/* Message timestamp */}
-                <div className="message-time">
-                    {formattedTime}
-                </div>
+                {formattedTime && (
+                    <div className="message-time">
+                        {formattedTime}
+                    </div>
+                )}
             </div>
         </div>
     );
 };
+
+// --- Prop Types remain the same ---
+ChatMessage.propTypes = {
+    message: PropTypes.shape({
+        sender: PropTypes.oneOf(['user', 'assistant']).isRequired,
+        type: PropTypes.string.isRequired, // Keep type for potential future use
+        content: PropTypes.string,
+        visualization: PropTypes.object,
+        metrics: PropTypes.arrayOf(PropTypes.object),
+        insights: PropTypes.arrayOf(PropTypes.object),
+        tips: PropTypes.arrayOf(PropTypes.object),
+        timestamp: PropTypes.string.isRequired,
+    }).isRequired,
+};
+
 
 export default ChatMessage;
