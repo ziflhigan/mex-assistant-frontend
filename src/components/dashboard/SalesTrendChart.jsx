@@ -6,7 +6,6 @@
  * It utilizes Chart.js for rendering and manages various display modes and interactions.
  */
 import React, { useState, useEffect, useRef, forwardRef } from 'react';
-import { useTranslation } from 'react-i18next';
 
 // --- Utilities ---
 import { formatDate } from '../../utils/dateFormatter';
@@ -56,7 +55,6 @@ Chart.register(
  * @param {React.Ref} ref - Forwarded ref to allow parent access to chart instance/canvas.
  */
 const SalesTrendChart = forwardRef(({ data, expanded = false }, ref) => {
-    const { t } = useTranslation();
     // --- State ---
     const [showPrediction, setShowPrediction] = useState(true); // Toggle for prediction line
     const [compareMode, setCompareMode] = useState(false);     // Toggle for comparing to a previous period
@@ -437,10 +435,10 @@ const SalesTrendChart = forwardRef(({ data, expanded = false }, ref) => {
                             type="checkbox"
                             checked={showPrediction}
                             onChange={() => setShowPrediction(!showPrediction)}
-                            aria-label={t('dashboard.charts.salesTrend.togglePrediction')}
+                            aria-label="Toggle Trend Prediction"
                         />
                         <span className="toggle-label">
-                            <i className="fas fa-wand-magic-sparkles"></i> {t('dashboard.charts.salesTrend.showPrediction')}
+                            <i className="fas fa-wand-magic-sparkles"></i> Show Prediction
                         </span>
                     </label>
 
@@ -451,10 +449,10 @@ const SalesTrendChart = forwardRef(({ data, expanded = false }, ref) => {
                                 type="checkbox"
                                 checked={compareMode}
                                 onChange={() => setCompareMode(!compareMode)}
-                                aria-label={t('dashboard.charts.salesTrend.toggleComparison')}
+                                aria-label="Toggle Previous Period Comparison"
                             />
                             <span className="toggle-label">
-                              <i className="fas fa-exchange-alt"></i> {t('dashboard.charts.salesTrend.comparePeriod')}
+                              <i className="fas fa-exchange-alt"></i> Compare Period
                           </span>
                         </label>
                     )}
@@ -492,18 +490,19 @@ const SalesTrendChart = forwardRef(({ data, expanded = false }, ref) => {
             {/* Selected Data Point Information Display */}
             {selectedDataPoint && (
                 <div className="data-point-info">
-                    <button className="close-info" onClick={() => setSelectedDataPoint(null)} aria-label={t('common.close')}>&times;</button>
+                    <button className="close-info" onClick={() => setSelectedDataPoint(null)} aria-label="Close data point details">×</button>
                     <h4>{selectedDataPoint.label}: {selectedDataPoint.dataset.label}</h4>
                     <p className="data-value">
-                        {selectedDataPoint.dataset.label.includes(t('dashboard.charts.salesTrend.views.sales'))
+                        {selectedDataPoint.dataset.label.includes('Sales')
                             ? formatCurrency(selectedDataPoint.value)
                             : selectedDataPoint.value}
                     </p>
-                    {compareMode && selectedDataPoint.dataset.label.includes(t('dashboard.charts.salesTrend.views.sales')) && !selectedDataPoint.dataset.label.includes(t('dashboard.charts.salesTrend.previous')) && (
+                    {/* Placeholder for comparison info - replace with real calculation */}
+                    {compareMode && selectedDataPoint.dataset.label.includes('Sales') && !selectedDataPoint.dataset.label.includes('Previous') && (
                         <p className="compare-info">
                             {Math.random() > 0.5 ?
-                                <span className="positive"><i className="fas fa-arrow-up"></i> {(Math.random() * 20).toFixed(1)}% {t('dashboard.charts.salesTrend.vsPrevious')}</span> :
-                                <span className="negative"><i className="fas fa-arrow-down"></i> {(Math.random() * 15).toFixed(1)}% {t('dashboard.charts.salesTrend.vsPrevious')}</span>}
+                                <span className="positive"><i className="fas fa-arrow-up"></i> {(Math.random() * 20).toFixed(1)}% vs previous</span> :
+                                <span className="negative"><i className="fas fa-arrow-down"></i> {(Math.random() * 15).toFixed(1)}% vs previous</span>}
                         </p>
                     )}
                 </div>

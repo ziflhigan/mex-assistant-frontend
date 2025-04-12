@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import StatsGrid from './StatsGrid';
 import SalesTrendChart from './SalesTrendChart';
 import HourlySalesChart from './HourlySalesChart';
@@ -14,7 +13,6 @@ import { downloadDashboardReport } from '../../utils/DownloadChartsUtil';
 import './css/Dashboard.css';
 
 function DashboardContainer() {
-    const { t } = useTranslation();
     // Use the dashboard context
     const {
         dashboardData,
@@ -86,10 +84,10 @@ function DashboardContainer() {
     if (error) {
         return (
             <div className="dashboard-error">
-                <h2>{t('dashboard.error.title')}</h2>
+                <h2>Error</h2>
                 <p>{error}</p>
                 <button className="retry-button" onClick={refreshData}>
-                    <i className="fas fa-sync-alt"></i> {t('dashboard.error.retry')}
+                    <i className="fas fa-sync-alt"></i> Retry
                 </button>
             </div>
         );
@@ -99,11 +97,11 @@ function DashboardContainer() {
         <div className="dashboard-container">
             <div className="dashboard-header">
                 <div className="dashboard-title-area">
-                    <h2 className="dashboard-title">{t('dashboard.title')}</h2>
+                    <h2 className="dashboard-title">Merchant Dashboard</h2>
                     <div className="dashboard-subtitle">
-                        <span className="last-updated">
-                            {t('dashboard.lastUpdated', { time: formattedLastUpdated })}
-                        </span>
+            <span className="last-updated">
+              Last updated: {formattedLastUpdated}
+            </span>
                         {!loading && (
                             <button
                                 className={`refresh-button ${showRefreshAnimation ? 'rotating' : ''}`}
@@ -123,7 +121,7 @@ function DashboardContainer() {
                         onChange={handleTimeFilterChange}
                     />
                     <button className="export-button" onClick={handleExport}>
-                        <i className="fas fa-download"></i> {t('dashboard.actions.export')}
+                        <i className="fas fa-download"></i> Export Data
                     </button>
                 </div>
             </div>
@@ -131,22 +129,11 @@ function DashboardContainer() {
             {loading && !dashboardData ? (
                 <div className="dashboard-loading">
                     <Loader />
-                    <p className="loading-text">{t('dashboard.loading')}</p>
+                    <p className="loading-text">Loading your business insights...</p>
                 </div>
             ) : (
                 <>
-                    <section className={`stats-section ${expandedSection === 'stats' ? 'expanded' : ''}`}>
-                        <div className="chart-header">
-                            <div className="chart-title">
-                                <i className="fas fa-chart-bar"></i> {t('dashboard.stats.title')}
-                            </div>
-                            <div className="chart-actions">
-                                <button onClick={() => handleExpandSection('stats')}>
-                                    <i className={`fas fa-${expandedSection === 'stats' ? 'compress-alt' : 'expand-alt'}`}></i>
-                                    {expandedSection === 'stats' ? t('dashboard.actions.collapse') : t('dashboard.actions.expand')}
-                                </button>
-                            </div>
-                        </div>
+                    <section className="stats-section">
                         <StatsGrid
                             data={dashboardData}
                             timeFrame={displayTimeFilter}
@@ -158,15 +145,15 @@ function DashboardContainer() {
                         <div className="chart-container chart-container-full">
                             <div className="chart-header">
                                 <div className="chart-title">
-                                    <i className="fas fa-chart-line"></i> {t('dashboard.charts.salesTrend.title')}
+                                    <i className="fas fa-chart-line"></i> Sales & Orders Trend
                                 </div>
                                 <div className="chart-actions">
                                     <button onClick={() => handleExpandSection('salesTrend')}>
                                         <i className={`fas fa-${expandedSection === 'salesTrend' ? 'compress-alt' : 'expand-alt'}`}></i>
-                                        {expandedSection === 'salesTrend' ? t('dashboard.actions.collapse') : t('dashboard.actions.expand')}
+                                        {expandedSection === 'salesTrend' ? 'Collapse' : 'Expand'}
                                     </button>
                                     <button onClick={handleExport}>
-                                        <i className="fas fa-download"></i> {t('dashboard.actions.export')}
+                                        <i className="fas fa-download"></i> Export
                                     </button>
                                 </div>
                             </div>
@@ -181,12 +168,11 @@ function DashboardContainer() {
                             <div className={`chart-container ${expandedSection === 'hourlySales' ? 'expanded' : ''}`}>
                                 <div className="chart-header">
                                     <div className="chart-title">
-                                        <i className="fas fa-clock"></i> {t('dashboard.charts.hourlySales.title')}
+                                        <i className="fas fa-clock"></i> Sales by Hour
                                     </div>
                                     <div className="chart-actions">
                                         <button onClick={() => handleExpandSection('hourlySales')}>
                                             <i className={`fas fa-${expandedSection === 'hourlySales' ? 'compress-alt' : 'expand-alt'}`}></i>
-                                            {expandedSection === 'hourlySales' ? t('dashboard.actions.collapse') : t('dashboard.actions.expand')}
                                         </button>
                                     </div>
                                 </div>
@@ -200,12 +186,11 @@ function DashboardContainer() {
                             <div className={`chart-container ${expandedSection === 'dailySales' ? 'expanded' : ''}`}>
                                 <div className="chart-header">
                                     <div className="chart-title">
-                                        <i className="fas fa-calendar-day"></i> {t('dashboard.charts.dailySales.title')}
+                                        <i className="fas fa-calendar-day"></i> Sales by Day
                                     </div>
                                     <div className="chart-actions">
                                         <button onClick={() => handleExpandSection('dailySales')}>
                                             <i className={`fas fa-${expandedSection === 'dailySales' ? 'compress-alt' : 'expand-alt'}`}></i>
-                                            {expandedSection === 'dailySales' ? t('dashboard.actions.collapse') : t('dashboard.actions.expand')}
                                         </button>
                                     </div>
                                 </div>
@@ -218,15 +203,15 @@ function DashboardContainer() {
                         </div>
                     </section>
 
-                    <section className={`top-items-section ${expandedSection === 'topItems' ? 'expanded' : ''}`}>
+                    <section className={`top-items ${expandedSection === 'topItems' ? 'expanded' : ''}`}>
                         <div className="chart-header">
                             <div className="chart-title">
-                                <i className="fas fa-trophy"></i> {t('dashboard.topItems.title')}
+                                <i className="fas fa-trophy"></i> Top Selling Items
                             </div>
                             <div className="chart-actions">
                                 <button onClick={() => handleExpandSection('topItems')}>
                                     <i className={`fas fa-${expandedSection === 'topItems' ? 'compress-alt' : 'expand-alt'}`}></i>
-                                    {expandedSection === 'topItems' ? t('dashboard.actions.collapse') : t('dashboard.actions.expand')}
+                                    {expandedSection === 'topItems' ? 'Collapse' : 'Expand'}
                                 </button>
                             </div>
                         </div>
@@ -240,12 +225,12 @@ function DashboardContainer() {
                         <div className="insights-header">
                             <div className="insights-title">
                                 <i className="fas fa-lightbulb"></i>
-                                {t('dashboard.aiInsights.title')}
+                                AI-Powered Insights
                             </div>
                             <div className="chart-actions">
                                 <button onClick={() => handleExpandSection('aiInsights')}>
                                     <i className={`fas fa-${expandedSection === 'aiInsights' ? 'compress-alt' : 'expand-alt'}`}></i>
-                                    {expandedSection === 'aiInsights' ? t('dashboard.actions.collapse') : t('dashboard.aiInsights.viewAll')}
+                                    {expandedSection === 'aiInsights' ? 'Collapse' : 'View All Insights'}
                                 </button>
                             </div>
                         </div>

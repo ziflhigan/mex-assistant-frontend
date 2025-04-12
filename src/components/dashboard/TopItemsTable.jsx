@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { formatCurrency } from '../../utils/numberFormatter';
 import { chartColors } from '../../utils/chartUtils';
 import './css/TopItemsTable.css';
 import '../dashboard/css/charts.css';
 
 function TopItemsTable({ data, expanded = false }) {
-    const { t } = useTranslation();
     const [sortConfig, setSortConfig] = useState({
         key: 'revenue',
         direction: 'desc'
@@ -101,8 +99,8 @@ function TopItemsTable({ data, expanded = false }) {
         return (
             <div className="no-data-message">
                 <i className="fas fa-shopping-basket"></i>
-                <p>{t('dashboard.topItems.noData.title')}</p>
-                <span>{t('dashboard.topItems.noData.subtitle')}</span>
+                <p>No item data available</p>
+                <span>When you start selling, your top items will appear here.</span>
             </div>
         );
     }
@@ -135,13 +133,13 @@ function TopItemsTable({ data, expanded = false }) {
                     <i className="fas fa-search"></i>
                     <input
                         type="text"
-                        placeholder={t('dashboard.topItems.search')}
+                        placeholder="Search items..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
                 </div>
                 <div className="category-filter">
-                    <label>{t('dashboard.topItems.category')}</label>
+                    <label>Category:</label>
                     <select
                         value={selectedCategory}
                         onChange={(e) => setSelectedCategory(e.target.value)}
@@ -162,25 +160,25 @@ function TopItemsTable({ data, expanded = false }) {
                             className={sortConfig.key === 'name' ? 'active-sort' : ''}
                             onClick={() => handleSort('name')}
                         >
-                            {t('dashboard.topItems.summary.topItem')}
+                            Item Name
                             <i className={`fas fa-sort${sortConfig.key === 'name' ? sortConfig.direction === 'asc' ? '-up' : '-down' : ''}`}></i>
                         </th>
-                        <th>{t('dashboard.topItems.category')}</th>
+                        <th>Category</th>
                         <th
                             className={sortConfig.key === 'revenue' ? 'active-sort' : ''}
                             onClick={() => handleSort('revenue')}
                         >
-                            {t('dashboard.topItems.summary.totalRevenue')}
+                            Price
                             <i className={`fas fa-sort${sortConfig.key === 'revenue' ? sortConfig.direction === 'asc' ? '-up' : '-down' : ''}`}></i>
                         </th>
                         <th
                             className={sortConfig.key === 'quantity' ? 'active-sort' : ''}
                             onClick={() => handleSort('quantity')}
                         >
-                            {t('dashboard.topItems.summary.totalOrders')}
+                            Orders
                             <i className={`fas fa-sort${sortConfig.key === 'quantity' ? sortConfig.direction === 'asc' ? '-up' : '-down' : ''}`}></i>
                         </th>
-                        <th>{t('dashboard.charts.trend')}</th>
+                        <th>Trend</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -224,19 +222,19 @@ function TopItemsTable({ data, expanded = false }) {
             {expanded && filteredData.length > 0 && (
                 <div className="table-summary">
                     <div className="summary-card">
-                        <div className="summary-title">{t('dashboard.topItems.summary.topItem')}</div>
+                        <div className="summary-title">Top Item</div>
                         <div className="summary-value">{filteredData[0]?.name}</div>
-                        <div className="summary-info">{filteredData[0]?.quantity} {t('dashboard.topItems.summary.orders')}</div>
+                        <div className="summary-info">{filteredData[0]?.quantity} orders</div>
                     </div>
                     <div className="summary-card">
-                        <div className="summary-title">{t('dashboard.topItems.summary.totalOrders')}</div>
+                        <div className="summary-title">Total Orders</div>
                         <div className="summary-value">{filteredData.reduce((sum, item) => sum + item.quantity, 0)}</div>
-                        <div className="summary-info">{t('dashboard.topItems.summary.items', { count: filteredData.length })}</div>
+                        <div className="summary-info">Across {filteredData.length} items</div>
                     </div>
                     <div className="summary-card">
-                        <div className="summary-title">{t('dashboard.topItems.summary.totalRevenue')}</div>
+                        <div className="summary-title">Total Revenue</div>
                         <div className="summary-value">{formatCurrency(filteredData.reduce((sum, item) => sum + item.revenue, 0))}</div>
-                        <div className="summary-info">{t('dashboard.topItems.summary.average', { value: formatCurrency(filteredData.reduce((sum, item) => sum + item.revenue, 0) / filteredData.length) })}</div>
+                        <div className="summary-info">Average: {formatCurrency(filteredData.reduce((sum, item) => sum + item.revenue, 0) / filteredData.length)}/item</div>
                     </div>
                 </div>
             )}

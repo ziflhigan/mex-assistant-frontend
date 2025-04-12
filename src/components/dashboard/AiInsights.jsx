@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import './css/AiInsights.css';
 
 function AiInsights({ insights = [], expanded = false }) {
-    const { t } = useTranslation();
     const [activeInsight, setActiveInsight] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
     const [popupContent, setPopupContent] = useState(null);
@@ -33,8 +31,8 @@ function AiInsights({ insights = [], expanded = false }) {
         return (
             <div className="insights-empty">
                 <i className="fas fa-search insight-empty-icon"></i>
-                <p>{t('dashboard.aiInsights.noInsights.title')}</p>
-                <p className="insights-empty-sub">{t('dashboard.aiInsights.noInsights.subtitle')}</p>
+                <p>No insights available at this time.</p>
+                <p className="insights-empty-sub">Check back later for AI-powered recommendations.</p>
             </div>
         );
     }
@@ -75,21 +73,21 @@ function AiInsights({ insights = [], expanded = false }) {
     const handleAction = (insight) => {
         setActiveInsight(insight);
         setPopupContent({
-            title: `${t('dashboard.aiInsights.actions.takeAction')}: ${insight.title}`,
+            title: `Action: ${insight.title}`,
             description: insight.description,
             actions: [
                 {
-                    label: t('dashboard.aiInsights.actions.viewDetails'),
+                    label: 'View Details',
                     icon: 'search',
                     action: () => console.log(`Viewing details for: ${insight.title}`)
                 },
                 {
-                    label: t('dashboard.aiInsights.actions.scheduleTask'),
+                    label: 'Schedule Task',
                     icon: 'calendar',
                     action: () => console.log(`Scheduling task for: ${insight.title}`)
                 },
                 {
-                    label: t('dashboard.aiInsights.actions.dismiss'),
+                    label: 'Dismiss',
                     icon: 'times',
                     action: () => console.log(`Dismissing insight: ${insight.title}`)
                 }
@@ -123,15 +121,15 @@ function AiInsights({ insights = [], expanded = false }) {
                             </div>
                             <h4>{insight.title}</h4>
                             <span className={`insight-severity ${insight.severity || 'medium'}`}>
-                                {t(`dashboard.aiInsights.severity.${insight.severity || 'medium'}`)}
-                            </span>
+                {insight.severity || 'medium'}
+              </span>
                         </div>
                         <p>{insight.description}</p>
                         <button
                             className="action-button"
                             onClick={() => handleAction(insight)}
                         >
-                            {t('dashboard.aiInsights.actions.takeAction')} <i className="fas fa-arrow-right"></i>
+                            Take Action <i className="fas fa-arrow-right"></i>
                         </button>
                     </div>
                 ))}
@@ -140,24 +138,30 @@ function AiInsights({ insights = [], expanded = false }) {
             {/* Action Popup */}
             {showPopup && popupContent && (
                 <div className={`insight-popup ${showPopup ? 'show' : ''}`}>
-                    <div className="popup-content">
-                        <button className="close-popup" onClick={closePopup}>×</button>
-                        <h3>{popupContent.title}</h3>
-                        <p>{popupContent.description}</p>
-                        <div className="popup-actions">
-                            {popupContent.actions.map((action, index) => (
-                                <button
-                                    key={index}
-                                    className="popup-action-button"
-                                    onClick={() => {
-                                        action.action();
-                                        closePopup();
-                                    }}
-                                >
-                                    <i className={`fas fa-${action.icon}`}></i>
-                                    {action.label}
-                                </button>
-                            ))}
+                    <div className="insight-popup-content">
+                        <div className="insight-popup-header">
+                            <h3>{popupContent.title}</h3>
+                            <button className="close-button" onClick={closePopup}>
+                                <i className="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div className="insight-popup-body">
+                            <p>{popupContent.description}</p>
+                            <div className="insight-popup-actions">
+                                {popupContent.actions.map((action, index) => (
+                                    <button
+                                        key={index}
+                                        className="insight-action-button"
+                                        onClick={() => {
+                                            action.action();
+                                            closePopup();
+                                        }}
+                                    >
+                                        <i className={`fas fa-${action.icon}`}></i>
+                                        {action.label}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

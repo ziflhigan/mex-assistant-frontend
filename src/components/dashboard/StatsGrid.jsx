@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import StatCard from '../common/StatCard';
 import { useDashboard } from '../../contexts/DashboardContext';
 import './css/StatsGrid.css';
 
 const StatsGrid = ({ timeFrame }) => {
-    const { t } = useTranslation();
     const { dashboardData } = useDashboard();
     const [animateCards, setAnimateCards] = useState(false);
 
@@ -41,44 +39,44 @@ const StatsGrid = ({ timeFrame }) => {
 
     const stats = [
         {
-            title: t('dashboard.stats.totalSales.title'),
+            title: 'Total Sales',
             value: totalSales,
-            change: t('dashboard.stats.comparison.since', { period: comparisonText }),
+            change: `${getComparisonText()} since ${comparisonText}`,
             icon: 'dollar-sign',
             iconColor: 'var(--grab-green)',
             formatType: 'currency',
-            changeDirection: Math.random() > 0.3 ? 'positive' : 'negative',
-            additionalInfo: t('dashboard.stats.totalSales.info')
+            changeDirection: Math.random() > 0.3 ? 'positive' : 'negative', // More dynamic
+            additionalInfo: 'Total revenue from all orders'
         },
         {
-            title: t('dashboard.stats.totalOrders.title'),
+            title: 'Total Orders',
             value: totalOrders,
-            change: t('dashboard.stats.comparison.since', { period: comparisonText }),
+            change: `${getComparisonText()} since ${comparisonText}`,
             icon: 'shopping-bag',
             iconColor: 'var(--accent-blue)',
             formatType: 'number',
             changeDirection: Math.random() > 0.3 ? 'positive' : 'negative',
-            additionalInfo: t('dashboard.stats.totalOrders.info')
+            additionalInfo: 'Number of completed transactions'
         },
         {
-            title: t('dashboard.stats.averageOrderValue.title'),
+            title: 'Average Order Value',
             value: averageOrderValue,
-            change: t('dashboard.stats.comparison.since', { period: comparisonText }),
+            change: `${getComparisonText()} since ${comparisonText}`,
             icon: 'receipt',
             iconColor: 'var(--accent-purple)',
             formatType: 'currency',
             changeDirection: Math.random() > 0.5 ? 'positive' : 'negative',
-            additionalInfo: t('dashboard.stats.averageOrderValue.info')
+            additionalInfo: 'Average revenue per transaction'
         },
         {
-            title: t('dashboard.stats.preparationTime.title'),
+            title: 'Avg Preparation Time',
             value: prepTime,
-            change: t('dashboard.stats.comparison.since', { period: comparisonText }),
+            change: `${getComparisonText()} since ${comparisonText}`,
             icon: 'clock',
             iconColor: 'var(--accent-orange)',
             formatType: 'minutes',
             changeDirection: Math.random() > 0.7 ? 'positive' : 'negative',
-            additionalInfo: t('dashboard.stats.preparationTime.info')
+            additionalInfo: 'Time from order to pickup'
         }
     ];
 
