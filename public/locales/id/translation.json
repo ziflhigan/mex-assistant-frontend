@@ -1,1 +1,147 @@
-{}
+{
+    "common": {
+      "loading": "Memuat...",
+      "error": "Terjadi kesalahan",
+      "retry": "Coba Lagi",
+      "save": "Simpan",
+      "cancel": "Batal",
+      "delete": "Hapus",
+      "edit": "Edit",
+      "submit": "Kirim",
+      "search": "Cari",
+      "filter": "Saring",
+      "sort": "Urutkan",
+      "clear": "Bersihkan",
+      "close": "Tutup"
+    },
+    "nav": {
+      "home": "Beranda",
+      "settings": "Pengaturan",
+      "profile": "Profil",
+      "chat": "Obrolan",
+      "dashboard": "Dasbor"
+    },
+    "auth": {
+      "login": "Masuk",
+      "logout": "Keluar",
+      "signup": "Daftar",
+      "email": "Email",
+      "password": "Kata Sandi",
+      "forgotPassword": "Lupa Kata Sandi?",
+      "rememberMe": "Ingat Saya"
+    },
+    "chat": {
+      "sendMessage": "Kirim Pesan",
+      "typeMessage": "Ketik pesan Anda...",
+      "attachFile": "Lampirkan Berkas",
+      "newChat": "Obrolan Baru",
+      "deleteChat": "Hapus Obrolan",
+      "clearHistory": "Bersihkan Sejarah",
+      "downloadChat": "Unduh Obrolan"
+    },
+    "settings": {
+      "title": "Pengaturan",
+      "subtitle": "Kelola pengaturan dan preferensi akun Anda",
+      "saveSuccess": "Pengaturan berhasil disimpan",
+      "personal": "Informasi Pribadi",
+      "business": "Pengaturan Bisnis",
+      "notifications": "Notifikasi",
+      "preferences": "Preferensi",
+      
+      "name": "Nama Lengkap",
+      "email": "Alamat Email",
+      "phone": "Nomor Telepon",
+      "language": "Bahasa",
+      "timezone": "Zona Waktu",
+      
+      "businessInfo": "Informasi Bisnis",
+      "businessName": "Nama Bisnis",
+      "businessType": "Jenis Bisnis",
+      "address": "Alamat Bisnis",
+      "operatingHours": "Jam Operasional",
+      "openingTime": "Jam Buka",
+      "closingTime": "Jam Tutup",
+      "currency": "Mata Uang",
+      "taxRate": "Tarif Pajak",
+      "deliveryRadius": "Radius Pengiriman",
+      
+      "notificationPreferences": "Preferensi Notifikasi",
+      "email": "Notifikasi Email",
+      "push": "Notifikasi Push",
+      "salesAlerts": "Peringatan Penjualan",
+      "lowStockAlerts": "Peringatan Stok Rendah",
+      "orderNotifications": "Notifikasi Pesanan",
+      "customerReviews": "Ulasan Pelanggan",
+      
+      "theme": "Tema",
+      "lightTheme": "Tema Terang",
+      "darkTheme": "Tema Gelap",
+      "systemTheme": "Tema Sistem",
+      "fontSize": "Ukuran Font",
+      "small": "Kecil",
+      "medium": "Sedang",
+      "large": "Besar",
+      "highContrast": "Mode Kontras Tinggi",
+      "compactMode": "Mode Ringkas",
+      "autoRefresh": "Penyegaran Otomatis",
+      "refreshInterval": "Interval Penyegaran",
+      
+      "businessTypes": {
+        "restaurant": "Restoran",
+        "cafe": "Kafe",
+        "foodStall": "Warung Makan",
+        "bakery": "Toko Roti"
+      },
+      
+      "currencies": {
+        "idr": "IDR (Rupiah Indonesia)",
+        "myr": "MYR (Ringgit Malaysia)",
+        "sgd": "SGD (Dolar Singapura)"
+      },
+      
+      "timezones": {
+        "utc": "UTC (Waktu Universal Terkoordinasi)",
+        "jakarta": "Jakarta (GMT+7)",
+        "kualaLumpur": "Kuala Lumpur (GMT+8)",
+        "singapore": "Singapura (GMT+8)"
+      },
+      
+      "tooltips": {
+        "highContrast": "Meningkatkan kontras untuk visibilitas yang lebih baik",
+        "compactMode": "Mengurangi jarak dalam antarmuka",
+        "autoRefresh": "Menyegarkan data secara otomatis pada interval tertentu",
+        "deliveryRadius": "Jarak pengiriman maksimum dalam kilometer",
+        "taxRate": "Tarif pajak default untuk transaksi"
+      }
+    },
+    "profile": {
+      "title": "Profil",
+      "editProfile": "Edit Profil",
+      "name": "Nama",
+      "bio": "Bio",
+      "location": "Lokasi",
+      "website": "Situs Web",
+      "saveChanges": "Simpan Perubahan"
+    },
+    "errors": {
+      "required": "Bidang ini diperlukan",
+      "invalidEmail": "Alamat email tidak valid",
+      "passwordLength": "Kata sandi harus setidaknya 8 karakter",
+      "networkError": "Kesalahan jaringan. Silakan periksa koneksi Anda.",
+      "unknownError": "Terjadi kesalahan yang tidak diketahui"
+    },
+    "dates": {
+      "today": "Hari Ini",
+      "yesterday": "Kemarin",
+      "tomorrow": "Besok"
+    },
+    "homePage": {
+      "welcome": "Selamat Datang di Aplikasi Kami",
+      "intro": "Ini adalah contoh bagaimana mengatur dukungan multibahasa."
+    },
+    "settingsPage": {
+      "header": "Pengaturan",
+      "language": "Ubah Bahasa"
+    }
+  }
+  

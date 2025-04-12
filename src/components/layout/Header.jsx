@@ -51,7 +51,7 @@ const Header = ({
   };
 
   const mobileHeaderStyle = {
-    '@media (max-width: 768px)': {
+    'maxWidth: 768px)': {
       width: '100%'
     }
   };
@@ -66,7 +66,7 @@ const Header = ({
     padding: '0',
     marginRight: '10px',
     // Show toggle button on mobile
-    '@media (max-width: 768px)': {
+    'maxWidth: 768px)': {
       display: 'block'
     }
   };
@@ -77,7 +77,7 @@ const Header = ({
     position: 'relative',
     margin: '0 20px',
     // Hide search on small mobile
-    '@media (max-width: 576px)': {
+    'maxWidth: 576px)': {
       display: 'none'
     }
   };
@@ -129,7 +129,7 @@ const Header = ({
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     // Hide username on smaller screens
-    '@media (max-width: 480px)': {
+    'maxWidth: 480px)': {
       display: 'none'
     }
   };
@@ -183,7 +183,7 @@ const Header = ({
             fontSize: '12px', 
             marginLeft: '5px', 
             color: '#888',
-            '@media (max-width: 480px)': {
+            'maxWidth: 480px)': {
               display: 'none'
             }
           }}
