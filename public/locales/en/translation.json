@@ -1,1 +1,245 @@
-{}
+{
+    "common": {
+      "loading": "Loading...",
+      "error": "An error occurred",
+      "retry": "Retry",
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "edit": "Edit",
+      "submit": "Submit",
+      "search": "Search",
+      "filter": "Filter",
+      "sort": "Sort",
+      "clear": "Clear",
+      "close": "Close"
+    },
+    "nav": {
+      "home": "Home",
+      "settings": "Settings",
+      "profile": "Profile",
+      "chat": "Chat",
+      "dashboard": "Dashboard"
+    },
+    "auth": {
+      "login": "Log In",
+      "logout": "Log Out",
+      "signup": "Sign Up",
+      "email": "Email",
+      "password": "Password",
+      "forgotPassword": "Forgot Password?",
+      "rememberMe": "Remember Me"
+    },
+    "chat": {
+      "sendMessage": "Send Message",
+      "typeMessage": "Type your message...",
+      "attachFile": "Attach File",
+      "newChat": "New Chat",
+      "deleteChat": "Delete Chat",
+      "clearHistory": "Clear History",
+      "downloadChat": "Download Chat"
+    },
+    "settings": {
+      "title": "Settings",
+      "subtitle": "Manage your account settings and preferences",
+      "saveSuccess": "Settings saved successfully",
+      "personal": "Personal Information",
+      "business": "Business Settings",
+      "notifications": "Notifications",
+      "preferences": "Preferences",
+      
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "language": "Language",
+      "timezone": "Timezone",
+      
+      "businessInfo": "Business Information",
+      "businessName": "Business Name",
+      "businessType": "Business Type",
+      "address": "Business Address",
+      "operatingHours": "Operating Hours",
+      "openingTime": "Opening Time",
+      "closingTime": "Closing Time",
+      "currency": "Currency",
+      "taxRate": "Tax Rate",
+      "deliveryRadius": "Delivery Radius",
+      
+      "notificationPreferences": "Notification Preferences",
+      "email": "Email Notifications",
+      "push": "Push Notifications",
+      "salesAlerts": "Sales Alerts",
+      "lowStockAlerts": "Low Stock Alerts",
+      "orderNotifications": "Order Notifications",
+      "customerReviews": "Customer Reviews",
+      
+      "theme": "Theme",
+      "lightTheme": "Light Theme",
+      "darkTheme": "Dark Theme",
+      "systemTheme": "System Theme",
+      "fontSize": "Font Size",
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large",
+      "highContrast": "High Contrast Mode",
+      "compactMode": "Compact Mode",
+      "autoRefresh": "Auto Refresh",
+      "refreshInterval": "Refresh Interval",
+      
+      "businessTypes": {
+        "restaurant": "Restaurant",
+        "cafe": "Cafe",
+        "foodStall": "Food Stall",
+        "bakery": "Bakery"
+      },
+      
+      "currencies": {
+        "idr": "IDR (Indonesian Rupiah)",
+        "myr": "MYR (Malaysian Ringgit)",
+        "sgd": "SGD (Singapore Dollar)"
+      },
+      
+      "timezones": {
+        "utc": "UTC (Coordinated Universal Time)",
+        "jakarta": "Jakarta (GMT+7)",
+        "kualaLumpur": "Kuala Lumpur (GMT+8)",
+        "singapore": "Singapore (GMT+8)"
+      },
+      
+      "tooltips": {
+        "highContrast": "Increases contrast for better visibility",
+        "compactMode": "Reduces spacing in the interface",
+        "autoRefresh": "Automatically refresh data at specified intervals",
+        "deliveryRadius": "Maximum delivery distance in kilometers",
+        "taxRate": "Default tax rate for transactions"
+      }
+    },
+    "profile": {
+      "title": "Profile",
+      "editProfile": "Edit Profile",
+      "name": "Name",
+      "bio": "Bio",
+      "location": "Location",
+      "website": "Website",
+      "saveChanges": "Save Changes"
+    },
+    "errors": {
+      "required": "This field is required",
+      "invalidEmail": "Invalid email address",
+      "passwordLength": "Password must be at least 8 characters",
+      "networkError": "Network error. Please check your connection.",
+      "unknownError": "An unknown error occurred"
+    },
+    "dates": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "tomorrow": "Tomorrow"
+    },
+    "homePage": {
+      "welcome": "Welcome to Our App",
+      "intro": "This is an example of how to set up multi-language support."
+    },
+    "settingsPage": {
+      "header": "Settings",
+      "language": "Change Language"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "empty": "No notifications yet",
+      "actions": {
+        "markAllRead": "Mark All Read",
+        "clearAll": "Clear All",
+        "markAsRead": "Mark as Read",
+        "delete": "Delete"
+      },
+      "search": {
+        "placeholder": "Search notifications..."
+      },
+      "filters": {
+        "categories": {
+          "all": "All Categories",
+          "orders": "Orders",
+          "inventory": "Inventory",
+          "payments": "Payments"
+        },
+        "status": {
+          "all": "All Status",
+          "read": "Read",
+          "unread": "Unread"
+        }
+      },
+      "sort": {
+        "byDate": "Sort by Date",
+        "byPriority": "Sort by Priority",
+        "toggleOrder": "Toggle Sort Order"
+      },
+      "dummy": {
+        "highSales": {
+          "title": "High Sales Alert",
+          "message": "Your sales have increased by 25% compared to yesterday"
+        },
+        "newFeature": {
+          "title": "New Feature Available",
+          "message": "Check out our new analytics dashboard"
+        },
+        "lowStock": {
+          "title": "Low Stock Alert",
+          "message": "Item \"Burger Special\" is running low on stock"
+        },
+        "paymentFailed": {
+          "title": "Payment Failed",
+          "message": "Payment for order #1234 has failed. Please check the payment details."
+        },
+        "newOrder": {
+          "title": "New Order Received",
+          "message": "You have received a new order #5678 for $150.00"
+        },
+        "refundRequest": {
+          "title": "Refund Request",
+          "message": "Customer has requested a refund for order #9012"
+        },
+        "customerReview": {
+          "title": "New Customer Review",
+          "message": "You received a 5-star review from John Doe"
+        },
+        "deliveryUpdate": {
+          "title": "Delivery Status Update",
+          "message": "Order #3456 has been delivered successfully"
+        },
+        "inventoryAlert": {
+          "title": "Inventory Update Required",
+          "message": "Several items need stock replenishment"
+        },
+        "systemUpdate": {
+          "title": "System Maintenance",
+          "message": "Scheduled maintenance will occur in 2 hours"
+        },
+        "realtime": {
+          "newOrder": {
+            "title": "New Order Alert",
+            "message": "A new order has been placed in your store"
+          },
+          "lowStock": {
+            "title": "Inventory Alert",
+            "message": "Several items are running low on stock"
+          },
+          "payment": {
+            "title": "Payment Alert",
+            "message": "A payment has been processed for your latest order"
+          },
+          "customerSupport": {
+            "title": "Customer Support Request",
+            "message": "A customer has opened a support ticket"
+          },
+          "deliveryDelay": {
+            "title": "Delivery Delay",
+            "message": "There might be a delay in today's deliveries"
+          },
+          "systemAlert": {
+            "title": "System Alert",
+            "message": "Your system has been updated to the latest version"
+          }
+        }
+      }
+    }
+  }  

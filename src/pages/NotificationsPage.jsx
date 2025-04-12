@@ -1,172 +1,300 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 import Card from '../components/common/Card';
-import Button from '../components/common/Button';
+import './NotificationsPage.css';
 
-/**
- * Simple placeholder for the Notifications page
- */
-const NotificationsPage = () => {
-  // Sample notifications data
-  const notifications = [
+function NotificationsPage() {
+  const { t } = useTranslation();
+  const [notifications, setNotifications] = useState([
     {
       id: 1,
       type: 'alert',
-      title: 'Inventory Alert',
-      message: 'Your Cheesy Bacon Fries are running low on stock. Consider restocking soon.',
-      date: '10 Apr 2025',
-      time: '09:45 AM',
-      isRead: false
+      category: 'orders',
+      title: t('notifications.dummy.highSales.title'),
+      message: t('notifications.dummy.highSales.message'),
+      timestamp: new Date(),
+      read: false,
+      priority: 'high'
     },
     {
       id: 2,
-      type: 'insight',
-      title: 'Sales Milestone',
-      message: 'Congratulations! You\'ve reached 10,000 total orders this month.',
-      date: '09 Apr 2025',
-      time: '02:30 PM',
-      isRead: true
+      type: 'info',
+      category: 'inventory',
+      title: t('notifications.dummy.newFeature.title'),
+      message: t('notifications.dummy.newFeature.message'),
+      timestamp: new Date(Date.now() - 3600000),
+      read: true,
+      priority: 'low'
     },
     {
       id: 3,
-      type: 'recommendation',
-      title: 'Menu Recommendation',
-      message: 'Based on search trends, adding "Fried Spring Rolls" to your menu could increase orders by up to 15%.',
-      date: '08 Apr 2025',
-      time: '11:15 AM',
-      isRead: true
+      type: 'warning',
+      category: 'payments',
+      title: t('notifications.dummy.lowStock.title'),
+      message: t('notifications.dummy.lowStock.message'),
+      timestamp: new Date(Date.now() - 7200000),
+      read: false,
+      priority: 'medium'
     },
     {
       id: 4,
       type: 'alert',
-      title: 'Preparation Time Alert',
-      message: 'Your average preparation time has increased by 20% in the last week. Check your kitchen workflow.',
-      date: '07 Apr 2025',
-      time: '04:20 PM',
-      isRead: false
+      category: 'orders',
+      title: t('notifications.dummy.paymentFailed.title'),
+      message: t('notifications.dummy.paymentFailed.message'),
+      timestamp: new Date(Date.now() - 86400000),
+      read: false,
+      priority: 'high'
     },
     {
       id: 5,
-      type: 'system',
-      title: 'System Update',
-      message: 'The MEX Assistant has been updated with new features. Check the What\'s New section.',
-      date: '06 Apr 2025',
-      time: '10:00 AM',
-      isRead: true
+      type: 'info',
+      category: 'inventory',
+      title: t('notifications.dummy.newOrder.title'),
+      message: t('notifications.dummy.newOrder.message'),
+      timestamp: new Date(Date.now() - 172800000),
+      read: true,
+      priority: 'medium'
+    },
+    {
+      id: 6,
+      type: 'warning',
+      category: 'payments',
+      title: t('notifications.dummy.refundRequest.title'),
+      message: t('notifications.dummy.refundRequest.message'),
+      timestamp: new Date(Date.now() - 259200000),
+      read: false,
+      priority: 'high'
     }
-  ];
+  ]);
 
-  // Get notification icon based on type
+  const [filters, setFilters] = useState({
+    category: 'all',
+    status: 'all',
+    search: ''
+  });
+
+  const [sortBy, setSortBy] = useState('timestamp');
+  const [sortOrder, setSortOrder] = useState('desc');
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  // Filter and sort notifications
+  const filteredNotifications = notifications
+    .filter(notification => {
+      const matchesCategory = filters.category === 'all' || notification.category === filters.category;
+      const matchesStatus = filters.status === 'all' || 
+        (filters.status === 'read' ? notification.read : !notification.read);
+      const matchesSearch = !filters.search || 
+        notification.title.toLowerCase().includes(filters.search.toLowerCase()) ||
+        notification.message.toLowerCase().includes(filters.search.toLowerCase());
+      return matchesCategory && matchesStatus && matchesSearch;
+    })
+    .sort((a, b) => {
+      if (sortBy === 'timestamp') {
+        return sortOrder === 'desc' ? b.timestamp - a.timestamp : a.timestamp - b.timestamp;
+      }
+      if (sortBy === 'priority') {
+        const priorityOrder = { high: 3, medium: 2, low: 1 };
+        return sortOrder === 'desc' ? 
+          priorityOrder[b.priority] - priorityOrder[a.priority] : 
+          priorityOrder[a.priority] - priorityOrder[b.priority];
+      }
+      return 0;
+    });
+
+  const markAsRead = useCallback((id) => {
+    setNotifications(prev => prev.map(notification => 
+      notification.id === id ? { ...notification, read: true } : notification
+    ));
+  }, []);
+
+  const deleteNotification = useCallback((id) => {
+    setNotifications(prev => prev.filter(notification => notification.id !== id));
+  }, []);
+
+  const markAllAsRead = useCallback(() => {
+    setNotifications(prev => prev.map(notification => ({ ...notification, read: true })));
+  }, []);
+
+  const clearAll = useCallback(() => {
+    setNotifications([]);
+  }, []);
+
+  const handleRefresh = useCallback(() => {
+    setIsRefreshing(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsRefreshing(false);
+    }, 1000);
+  }, []);
+
+  // Simulate real-time updates
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Simulate new notification
+      if (Math.random() > 0.7) {
+        const dummyNotifications = [
+          {
+            title: t('notifications.dummy.realtime.newOrder.title'),
+            message: t('notifications.dummy.realtime.newOrder.message'),
+            type: 'info',
+            category: 'orders',
+            priority: 'medium'
+          },
+          {
+            title: t('notifications.dummy.realtime.lowStock.title'),
+            message: t('notifications.dummy.realtime.lowStock.message'),
+            type: 'warning',
+            category: 'inventory',
+            priority: 'high'
+          },
+          {
+            title: t('notifications.dummy.realtime.payment.title'),
+            message: t('notifications.dummy.realtime.payment.message'),
+            type: 'alert',
+            category: 'payments',
+            priority: 'high'
+          }
+        ];
+
+        const newNotification = {
+          ...dummyNotifications[Math.floor(Math.random() * dummyNotifications.length)],
+          id: Date.now(),
+          timestamp: new Date(),
+          read: false
+        };
+        setNotifications(prev => [newNotification, ...prev]);
+      }
+    }, 30000); // Check every 30 seconds
+
+    return () => clearInterval(interval);
+  }, [t]);
+
   const getNotificationIcon = (type) => {
     switch (type) {
       case 'alert':
-        return <i className="fas fa-exclamation-circle" style={{ color: '#e74c3c' }}></i>;
-      case 'insight':
-        return <i className="fas fa-chart-line" style={{ color: '#3498db' }}></i>;
-      case 'recommendation':
-        return <i className="fas fa-lightbulb" style={{ color: '#f1c40f' }}></i>;
-      case 'system':
-        return <i className="fas fa-cog" style={{ color: '#7f8c8d' }}></i>;
+        return 'fas fa-bell';
+      case 'info':
+        return 'fas fa-info-circle';
+      case 'warning':
+        return 'fas fa-exclamation-triangle';
       default:
-        return <i className="fas fa-bell" style={{ color: '#2ecc71' }}></i>;
+        return 'fas fa-bell';
     }
   };
 
   return (
     <div className="notifications-page">
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center', 
-        marginBottom: '20px' 
-      }}>
-        <h2 style={{ fontSize: '24px', fontWeight: 600, margin: 0 }}>Notifications</h2>
-        <div>
-          <Button variant="text" style={{ marginRight: '10px' }}>
-            Mark All as Read
-          </Button>
-          <Button variant="outlined">
-            Settings
-          </Button>
+      <div className="notifications-header">
+        <h1>{t('notifications.title')}</h1>
+        <div className="notifications-actions">
+          <button className="mark-all-read" onClick={markAllAsRead}>
+            {t('notifications.actions.markAllRead')}
+          </button>
+          <button className="clear-all" onClick={clearAll}>
+            {t('notifications.actions.clearAll')}
+          </button>
         </div>
       </div>
-      
-      <Card noPadding>
-        {notifications.map((notification, index) => (
-          <div 
-            key={notification.id} 
-            style={{
-              padding: '15px 20px',
-              borderBottom: index < notifications.length - 1 ? '1px solid #f0f0f0' : 'none',
-              backgroundColor: notification.isRead ? 'transparent' : 'rgba(0, 177, 79, 0.05)',
-              display: 'flex',
-              alignItems: 'flex-start'
-            }}
+
+      <div className="notifications-filters">
+        <div className="search-bar">
+          <i className="fas fa-search"></i>
+          <input
+            type="text"
+            placeholder={t('notifications.search.placeholder')}
+            value={filters.search}
+            onChange={(e) => setFilters(prev => ({ ...prev, search: e.target.value }))}
+          />
+        </div>
+
+        <div className="filter-options">
+          <select
+            value={filters.category}
+            onChange={(e) => setFilters(prev => ({ ...prev, category: e.target.value }))}
           >
-            <div style={{ 
-              width: '40px', 
-              height: '40px', 
-              borderRadius: '50%', 
-              backgroundColor: '#f5f5f5', 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center',
-              marginRight: '15px',
-              flexShrink: 0
-            }}>
-              {getNotificationIcon(notification.type)}
-            </div>
-            
-            <div style={{ flex: 1 }}>
-              <div style={{ 
-                display: 'flex', 
-                justifyContent: 'space-between', 
-                alignItems: 'center', 
-                marginBottom: '5px' 
-              }}>
-                <h4 style={{ margin: 0, fontSize: '16px', fontWeight: 600 }}>
-                  {notification.title}
-                  {!notification.isRead && (
-                    <span style={{ 
-                      display: 'inline-block', 
-                      width: '8px', 
-                      height: '8px', 
-                      borderRadius: '50%', 
-                      backgroundColor: 'var(--grab-green, #00b14f)', 
-                      marginLeft: '8px' 
-                    }}></span>
+            <option value="all">{t('notifications.filters.categories.all')}</option>
+            <option value="orders">{t('notifications.filters.categories.orders')}</option>
+            <option value="inventory">{t('notifications.filters.categories.inventory')}</option>
+            <option value="payments">{t('notifications.filters.categories.payments')}</option>
+          </select>
+
+          <select
+            value={filters.status}
+            onChange={(e) => setFilters(prev => ({ ...prev, status: e.target.value }))}
+          >
+            <option value="all">{t('notifications.filters.status.all')}</option>
+            <option value="unread">{t('notifications.filters.status.unread')}</option>
+            <option value="read">{t('notifications.filters.status.read')}</option>
+          </select>
+
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+          >
+            <option value="timestamp">{t('notifications.sort.byDate')}</option>
+            <option value="priority">{t('notifications.sort.byPriority')}</option>
+          </select>
+
+          <button
+            className="sort-order"
+            onClick={() => setSortOrder(prev => prev === 'desc' ? 'asc' : 'desc')}
+            aria-label={t('notifications.sort.toggleOrder')}
+          >
+            <i className={`fas fa-sort-${sortOrder === 'desc' ? 'down' : 'up'}`}></i>
+          </button>
+        </div>
+      </div>
+
+      <div className={`notifications-list ${isRefreshing ? 'refreshing' : ''}`}>
+        {filteredNotifications.length > 0 ? (
+          filteredNotifications.map(notification => (
+            <Card 
+              key={notification.id} 
+              className={`notification-card ${notification.read ? 'read' : 'unread'}`}
+              data-type={notification.type}
+            >
+              <div className="notification-content">
+                <div className="notification-icon">
+                  <i className={getNotificationIcon(notification.type)}></i>
+                </div>
+                <div className="notification-details">
+                  <h3>{notification.title}</h3>
+                  <p>{notification.message}</p>
+                  <span className="notification-time">
+                    {new Date(notification.timestamp).toLocaleString()}
+                  </span>
+                </div>
+                <div className="notification-actions">
+                  {!notification.read && (
+                    <button 
+                      onClick={() => markAsRead(notification.id)}
+                      className="mark-read"
+                      aria-label={t('notifications.actions.markAsRead')}
+                    >
+                      <i className="fas fa-check"></i>
+                    </button>
                   )}
-                </h4>
-                <div style={{ fontSize: '12px', color: '#777' }}>
-                  {notification.date} at {notification.time}
+                  <button 
+                    onClick={() => deleteNotification(notification.id)}
+                    className="delete"
+                    aria-label={t('notifications.actions.delete')}
+                  >
+                    <i className="fas fa-trash"></i>
+                  </button>
                 </div>
               </div>
-              
-              <p style={{ margin: 0, color: '#555', fontSize: '14px' }}>
-                {notification.message}
-              </p>
-              
-              <div style={{ marginTop: '10px' }}>
-                <Button 
-                  variant="text" 
-                  size="small" 
-                  style={{ padding: '2px 0' }}
-                >
-                  {notification.isRead ? 'Mark as Unread' : 'Mark as Read'}
-                </Button>
-              </div>
-            </div>
+            </Card>
+          ))
+        ) : (
+          <div className="notifications-empty">
+            <i className="fas fa-bell-slash"></i>
+            <p>{t('notifications.empty')}</p>
           </div>
-        ))}
-      </Card>
-      
-      {/* Load More Button */}
-      <div style={{ textAlign: 'center', marginTop: '20px' }}>
-        <Button variant="outlined">
-          Load More
-        </Button>
+        )}
       </div>
     </div>
   );
-};
+}
 
 export default NotificationsPage;

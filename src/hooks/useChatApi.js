@@ -1,27 +1,32 @@
-// src/hooks/useChatApi.js
-import { useState } from 'react';
+import { useChatContext } from '../contexts/ChatContext';
+import chatService from '../services/chatService';
 
-const useChatApi = () => {
-  const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(false);
+// Custom hook to handle sending messages and receiving assistant replies
+export default function useChatApi() {
+    const { dispatch, language } = useChatContext();
 
-  const sendMessage = async (message) => {
-    setLoading(true);
-    try {
-      // Here you would typically make an API call to your chat service
-      // For this example, we'll simulate a response after a delay
-      await new Promise(resolve => setTimeout(resolve, 500)); // Simulate API call delay
-      const response = { text: `You said: ${message}` }; // Replace with actual API response
-      setMessages([...messages, { role: 'user', content: message }, { role: 'assistant', content: response.text }]);
-    } catch (error) {
-      console.error("Error sending message:", error);
-      // Handle error appropriately, e.g., display an error message to the user
-    } finally {
-      setLoading(false);
-    }
-  };
+    // Send a new user message and handle the assistant's response
+    const sendMessage = async (userMessage) => {
+        if (!userMessage || userMessage.trim() === '') {
+            return; // ignore empty messages
+        }
+        const content = userMessage.trim();
+        // Dispatch the user message to context (adds it to chat and shows typing indicator)
+        dispatch({ type: 'SEND_MESSAGE', payload: content });
+        try {
+            // Call chat service to get the assistant's response (simulate API call)
+            const assistantResponse = await chatService.sendMessage(content, language);
+            // Dispatch the assistant's message to context (adds message and hides typing indicator)
+            dispatch({ type: 'RECEIVE_MESSAGE', payload: assistantResponse });
+        } catch (error) {
+            console.error('Error sending message:', error);
+            // On error, dispatch a fallback error message from assistant
+            dispatch({
+                type: 'RECEIVE_MESSAGE',
+                payload: { sender: 'assistant', type: 'text', content: 'Oops, something went wrong.' }
+            });
+        }
+    };
 
-  return { messages, loading, sendMessage };
-};
-
-export default useChatApi;
+    return { sendMessage };
+}
