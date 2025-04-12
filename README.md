@@ -4,7 +4,7 @@
   <img src="./assets/mex-logo.png" alt="MEX Assistant Logo" width="200"/>
 
 
-[**Demo Video**](https://365umedumy-my.sharepoint.com/:f:/g/personal/s2191553_siswa365_um_edu_my/Eu9_iqwzs5pFmNnACcNd4KgBg_pZpywrnXmDZQ8H9FFFrQ?e=uqMhA0) |
+[**Demo Video**](https://365umedumy-my.sharepoint.com/:f:/g/personal/s2189538_siswa365_um_edu_my/ErMN99lwylNEjkOrrcxubTkBvYokxu6yIBZL30wlG2wAgg?e=LDPZEI) |
 [**Presentation Slides**](https://www.canva.com/design/DAGkbIGBwmw/4M_EOHjB3KMtQOLt7hgckA/edit?utm_content=DAGkbIGBwmw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) |
 [**Proposal Document**](https://www.notion.so/MEX-Assistant-Proposal-Sudo_Chill-1d36b616bf6b8087b9cac0def49c3d8d?pvs=4)
 </div>
