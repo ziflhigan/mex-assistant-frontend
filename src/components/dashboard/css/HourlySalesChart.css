@@ -1,0 +1,201 @@
+.hourly-sales-chart {
+    position: relative;
+    width: 100%;
+  }
+  
+  .hourly-sales-chart.expanded {
+    height: calc(100vh - 200px);
+  }
+  
+  .chart-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .display-toggle {
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .toggle-button {
+    padding: 6px 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .toggle-button:not(:last-child) {
+    border-right: 1px solid #e0e0e0;
+  }
+  
+  .toggle-button.active {
+    background-color: var(--accent-blue);
+    color: white;
+  }
+  
+  .toggle-button:not(.active):hover {
+    background-color: #f0f0f0;
+  }
+  
+  .peak-toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .peak-toggle input {
+    margin-right: 8px;
+  }
+  
+  .toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .toggle-label i {
+    color: var(--accent-blue);
+  }
+  
+  .chart-loading {
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .chart-placeholder {
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    text-align: center;
+  }
+  
+  .chart-placeholder i {
+    font-size: 40px;
+    color: #ddd;
+    margin-bottom: 15px;
+  }
+  
+  .timeslot-details {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    z-index: 10;
+    min-width: 180px;
+    max-width: 250px;
+    border-left: 4px solid var(--accent-blue);
+  }
+  
+  .close-details {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #888;
+  }
+  
+  .timeslot-details h4 {
+    margin: 0 0 10px 0;
+    color: var(--grab-dark-gray);
+    font-size: 1.1rem;
+  }
+  
+  .detail-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 5px 0;
+    color: var(--grab-dark-gray);
+  }
+  
+  .detail-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 5px;
+  }
+  
+  .detail-tag.peak {
+    background-color: rgba(0, 177, 79, 0.1);
+    color: var(--grab-green);
+  }
+  
+  .detail-tag.slow {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+  }
+  
+  .daily-percent {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .canvas-container {
+    width: 100%;
+    position: relative;
+  }
+  
+  .peak-hour-insight {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    border-left: 3px solid var(--grab-green);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .peak-hour-insight i {
+    color: var(--grab-green);
+    font-size: 1.2rem;
+    margin-top: 2px;
+  }
+  
+  .peak-hour-insight strong {
+    color: var(--grab-dark-gray);
+  }
+  
+  .insight-tip {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    color: #888;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .chart-options {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .timeslot-details {
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+  }
