@@ -91,8 +91,9 @@ MEX Assistant leverages powerful data analytics, machine learning, and a convers
 
 The MEX Assistant follows a modular architecture with clear separation of concerns:
 
-<img src="./assets/sys-arch.png" alt="MEX Assistant Logo" width="3840"/>
-
+<img src="./assets/sys-arch.png" alt="System Architecture" width="3840"/>
+<img src="./assets/sequence_diagram_assis_query_flow.png" alt="System Architecture" width="3840"/>
+<img src="./assets/use_case.png" alt="System Architecture" width="1924"/>
 
 1. **UI Layer**: React components for rendering the interface
 2. **State Management**: React Context API for global state
