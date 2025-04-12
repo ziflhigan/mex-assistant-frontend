@@ -1,34 +1,18 @@
-// import React from 'react';
-// import { useChatContext } from '../../contexts/ChatContext';
-
-// // Dropdown to select the UI/response language (integrated with i18n via context)
-// export default function LanguageSelector() {
-//     const { language, setLanguage } = useChatContext();
-
-//     const handleChange = (e) => {
-//         const newLang = e.target.value;
-//         setLanguage(newLang);
-//         // i18n.changeLanguage is called in ChatContext effect when language state updates
-//     };
-
-//     return (
-//         <select 
-//             className="language-selector" 
-//             value={language} 
-//             onChange={handleChange}
-//             aria-label="Select language"
-//         >
-//             <option value="en">English</option>
-//             <option value="zh">中文</option>
-//             <option value="ms">Melayu</option>
-//         </select>
-//     );
-// }
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useChatContext } from '../../contexts/ChatContext'; // Optional if using context
 
+/**
+ * LanguageSelector Component
+ *
+ * Dropdown to select the UI/response language.
+ * - Uses i18n to handle actual language switching
+ * - Optionally integrates with ChatContext for syncing state across app
+ * - Designed to be used in settings or chat header
+ */
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
+  const { language, setLanguage } = useChatContext(); // Optional context sync
 
   const languages = [
     { code: 'en', label: 'English' },
@@ -40,15 +24,26 @@ const LanguageSelector = () => {
     { code: 'es', label: 'Español' },
   ];
 
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
+  // Ensure i18n changes when ChatContext language changes
+  useEffect(() => {
+    if (language !== i18n.language) {
+      i18n.changeLanguage(language);
+    }
+  }, [language, i18n]);
+
+  // Update both ChatContext and i18n on change
+  const handleChange = (e) => {
+    const newLang = e.target.value;
+    setLanguage(newLang); // updates context
+    i18n.changeLanguage(newLang); // updates translation
   };
 
   return (
     <select
       className="language-selector"
-      value={i18n.language}
-      onChange={(e) => changeLanguage(e.target.value)}
+      value={language || i18n.language}
+      onChange={handleChange}
+      aria-label="Select language"
     >
       {languages.map((lang) => (
         <option key={lang.code} value={lang.code}>

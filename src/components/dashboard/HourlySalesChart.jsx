@@ -5,6 +5,7 @@
  * Offers Bar and Trend (Line) view modes. Highlights peak/slow hours.
  */
 import React, { useState, useEffect, useRef, forwardRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // --- Utilities ---
 import { formatCurrency } from '../../utils/numberFormatter';
@@ -54,6 +55,7 @@ Chart.register(
  * @param {React.Ref} ref - Forwarded ref.
  */
 const HourlySalesChart = forwardRef(({ data, expanded = false }, ref) => {
+    const { t } = useTranslation();
     // --- State ---
     // Removed internal loading state
     const [activeTimeSlot, setActiveTimeSlot] = useState(null); // For displaying details on click
@@ -280,7 +282,7 @@ const HourlySalesChart = forwardRef(({ data, expanded = false }, ref) => {
                 <div className="chart-placeholder" style={{ height: expanded ? 'calc(100vh - 200px)' : '250px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <div>
                         <i className="fas fa-clock" style={{ fontSize: '3em', color: '#ccc' }}></i>
-                        <p style={{ color: '#888', marginTop: '10px' }}>No hourly sales data available.</p>
+                        <p style={{ color: '#888', marginTop: '10px' }}>{t('dashboard.charts.hourlySales.noData')}</p>
                     </div>
                 </div>
             </div>
@@ -294,18 +296,18 @@ const HourlySalesChart = forwardRef(({ data, expanded = false }, ref) => {
                 <div className="display-toggle">
                     <button
                         className={`toggle-button ${displayMode === 'bar' ? 'active' : ''}`}
-                        onClick={() => setDisplayMode('bar')} aria-pressed={displayMode === 'bar'} title="Switch to Bar View">
-                        <i className="fas fa-chart-bar"></i> Bar
+                        onClick={() => setDisplayMode('bar')} aria-pressed={displayMode === 'bar'} title={t('dashboard.charts.hourlySales.barView')}>
+                        <i className="fas fa-chart-bar"></i> {t('dashboard.charts.hourlySales.bar')}
                     </button>
                     <button
                         className={`toggle-button ${displayMode === 'heatmap' ? 'active' : ''}`}
-                        onClick={() => setDisplayMode('heatmap')} aria-pressed={displayMode === 'heatmap'} title="Switch to Trend View">
-                        <i className="fas fa-chart-area"></i> Trend
+                        onClick={() => setDisplayMode('heatmap')} aria-pressed={displayMode === 'heatmap'} title={t('dashboard.charts.hourlySales.trendView')}>
+                        <i className="fas fa-chart-area"></i> {t('dashboard.charts.trend')}
                     </button>
                 </div>
                 <label className="peak-toggle chart-control-label">
-                    <input type="checkbox" checked={highlightPeaks} onChange={() => setHighlightPeaks(!highlightPeaks)} aria-label="Toggle peak hour highlighting"/>
-                    <span className="toggle-label"><i className="fas fa-fire"></i> Highlight Peaks</span>
+                    <input type="checkbox" checked={highlightPeaks} onChange={() => setHighlightPeaks(!highlightPeaks)} aria-label={t('dashboard.charts.hourlySales.togglePeaks')}/>
+                    <span className="toggle-label"><i className="fas fa-fire"></i> {t('dashboard.charts.hourlySales.highlightPeaks')}</span>
                 </label>
             </div>
 

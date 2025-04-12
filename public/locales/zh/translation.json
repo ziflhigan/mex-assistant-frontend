@@ -23,7 +23,7 @@
     },
     "auth": {
       "login": "登录",
-      "logout": "登出",
+      "logout": "退出",
       "signup": "注册",
       "email": "电子邮件",
       "password": "密码",
@@ -37,39 +37,39 @@
       "newChat": "新聊天",
       "deleteChat": "删除聊天",
       "clearHistory": "清除历史记录",
-      "downloadChat": "下载聊天记录"
+      "downloadChat": "下载聊天"
     },
     "settings": {
       "title": "设置",
       "subtitle": "管理您的账户设置和偏好",
       "saveSuccess": "设置保存成功",
       "personal": "个人信息",
-      "business": "商业设置",
+      "business": "业务设置",
       "notifications": "通知",
       "preferences": "偏好设置",
       
-      "name": "姓名",
-      "email": "电子邮箱",
+      "name": "全名",
+      "email": "电子邮件地址",
       "phone": "电话号码",
       "language": "语言",
       "timezone": "时区",
       
-      "businessInfo": "商业信息",
-      "businessName": "商家名称",
-      "businessType": "商家类型",
-      "address": "商家地址",
+      "businessInfo": "业务信息",
+      "businessName": "业务名称",
+      "businessType": "业务类型",
+      "address": "业务地址",
       "operatingHours": "营业时间",
       "openingTime": "开始时间",
       "closingTime": "结束时间",
       "currency": "货币",
       "taxRate": "税率",
-      "deliveryRadius": "配送范围",
+      "deliveryRadius": "配送半径",
       
       "notificationPreferences": "通知偏好",
-      "email": "邮件通知",
+      "email": "电子邮件通知",
       "push": "推送通知",
       "salesAlerts": "销售提醒",
-      "lowStockAlerts": "库存不足提醒",
+      "lowStockAlerts": "低库存提醒",
       "orderNotifications": "订单通知",
       "customerReviews": "客户评价",
       
@@ -88,27 +88,27 @@
       
       "businessTypes": {
         "restaurant": "餐厅",
-        "cafe": "咖啡厅",
-        "foodStall": "小吃摊",
+        "cafe": "咖啡馆",
+        "foodStall": "食品摊",
         "bakery": "面包店"
       },
       
       "currencies": {
-        "idr": "IDR (印尼盾)",
-        "myr": "MYR (马来西亚林吉特)",
-        "sgd": "SGD (新加坡元)"
+        "idr": "IDR（印尼盾）",
+        "myr": "MYR（马来西亚林吉特）",
+        "sgd": "SGD（新加坡元）"
       },
       
       "timezones": {
-        "utc": "UTC (协调世界时)",
-        "jakarta": "雅加达 (GMT+7)",
-        "kualaLumpur": "吉隆坡 (GMT+8)",
-        "singapore": "新加坡 (GMT+8)"
+        "utc": "UTC（协调世界时）",
+        "jakarta": "雅加达（GMT+7）",
+        "kualaLumpur": "吉隆坡（GMT+8）",
+        "singapore": "新加坡（GMT+8）"
       },
       
       "tooltips": {
-        "highContrast": "提高对比度以获得更好的可视性",
-        "compactMode": "减少界面中的空间",
+        "highContrast": "增加对比度以提高可见性",
+        "compactMode": "减少界面中的间距",
         "autoRefresh": "按指定间隔自动刷新数据",
         "deliveryRadius": "最大配送距离（公里）",
         "taxRate": "交易的默认税率"
@@ -116,18 +116,18 @@
     },
     "profile": {
       "title": "个人资料",
-      "editProfile": "编辑资料",
+      "editProfile": "编辑个人资料",
       "name": "姓名",
-      "bio": "简介",
+      "bio": "个人简介",
       "location": "位置",
       "website": "网站",
       "saveChanges": "保存更改"
     },
     "errors": {
       "required": "此字段为必填项",
-      "invalidEmail": "无效的电子邮箱地址",
-      "passwordLength": "密码长度必须至少为8个字符",
-      "networkError": "网络错误，请检查您的连接",
+      "invalidEmail": "电子邮件地址无效",
+      "passwordLength": "密码必须至少包含8个字符",
+      "networkError": "网络错误。请检查您的连接。",
       "unknownError": "发生未知错误"
     },
     "dates": {
@@ -137,11 +137,194 @@
     },
     "homePage": {
       "welcome": "欢迎使用我们的应用",
-      "intro": "这是一个如何设置多语言支持的示例"
+      "intro": "这是如何设置多语言支持的示例。"
     },
     "settingsPage": {
       "header": "设置",
       "language": "更改语言"
+    },
+    "dashboard": {
+        "title": "商家仪表板",
+        "lastUpdated": "最后更新：{{time}}",
+        "loading": "正在加载您的业务洞察...",
+        "error": {
+            "title": "错误",
+            "retry": "重试"
+        },
+        "actions": {
+            "export": "导出数据",
+            "refresh": "刷新",
+            "expand": "展开",
+            "collapse": "折叠"
+        },
+        "stats": {
+            "title": "概览统计",
+            "totalSales": {
+                "title": "总销售额",
+                "info": "所有订单的总收入"
+            },
+            "totalOrders": {
+                "title": "总订单数",
+                "info": "已完成的交易数量"
+            },
+            "averageOrderValue": {
+                "title": "平均订单价值",
+                "info": "每笔交易的平均收入"
+            },
+            "preparationTime": {
+                "title": "平均准备时间",
+                "info": "从订单到取货的时间"
+            },
+            "comparison": {
+                "since": "自{{period}}以来"
+            }
+        },
+        "charts": {
+            "salesTrend": {
+                "title": "销售趋势",
+                "noData": "所选时间段没有趋势数据",
+                "predictionNote": "预测基于近期趋势，可能无法反映未来实际表现",
+                "views": {
+                    "sales": "销售额",
+                    "orders": "订单量",
+                    "both": "两者"
+                },
+                "tooltips": {
+                    "sales": "显示销售趋势",
+                    "orders": "显示订单趋势",
+                    "both": "显示销售和订单趋势"
+                },
+                "togglePrediction": "切换趋势预测",
+                "showPrediction": "显示预测",
+                "toggleComparison": "切换上期比较",
+                "comparePeriod": "比较周期",
+                "previous": "上期",
+                "vsPrevious": "对比上期"
+            },
+            "dailySales": {
+                "title": "日销售额",
+                "noData": "暂无日销售数据",
+                "clickForDetails": "点击柱状图查看每日详情",
+                "bestDay": "{{day}}通常是您表现最好的日期"
+            },
+            "hourlySales": {
+                "title": "按小时销售额",
+                "noData": "暂无按小时销售数据",
+                "barView": "切换到柱状图视图",
+                "bar": "柱状图",
+                "trendView": "切换到趋势视图",
+                "togglePeaks": "切换高峰时段标记",
+                "highlightPeaks": "突出显示高峰"
+            },
+            "trend": "趋势"
+        },
+        "topItems": {
+            "title": "畅销商品",
+            "search": "搜索商品...",
+            "category": "类别：",
+            "noData": {
+                "title": "暂无商品数据",
+                "subtitle": "当您开始销售时，您的畅销商品将显示在这里。"
+            },
+            "summary": {
+                "topItem": "热门商品",
+                "totalOrders": "总订单数",
+                "totalRevenue": "总收入",
+                "orders": "订单",
+                "items": "商品",
+                "average": "平均：{{value}}/商品"
+            }
+        },
+        "aiInsights": {
+            "title": "AI驱动的洞察",
+            "viewAll": "查看所有洞察",
+            "noInsights": {
+                "title": "目前没有可用的洞察。",
+                "subtitle": "稍后再查看AI驱动的建议。"
+            },
+            "actions": {
+                "takeAction": "采取行动",
+                "viewDetails": "查看详情",
+                "scheduleTask": "安排任务",
+                "dismiss": "忽略"
+            },
+            "severity": {
+                "high": "高",
+                "medium": "中",
+                "low": "低"
+            }
+        }
+    },
+    "notifications": {
+        "title": "通知",
+        "empty": "暂无通知",
+        "actions": {
+            "markAllRead": "全部标记为已读",
+            "clearAll": "清除全部",
+            "markAsRead": "标记为已读",
+            "delete": "删除"
+        },
+        "search": {
+            "placeholder": "搜索通知..."
+        },
+        "filters": {
+            "categories": {
+                "all": "所有类别",
+                "orders": "订单",
+                "inventory": "库存",
+                "payments": "支付"
+            },
+            "status": {
+                "all": "所有状态",
+                "read": "已读",
+                "unread": "未读"
+            }
+        },
+        "sort": {
+            "byDate": "按日期排序",
+            "byPriority": "按优先级排序",
+            "toggleOrder": "切换排序顺序"
+        },
+        "dummy": {
+            "highSales": {
+                "title": "销售额高峰提醒",
+                "message": "您的销售额比昨天增长了25%"
+            },
+            "newFeature": {
+                "title": "新功能上线",
+                "message": "快来体验我们的新分析仪表板"
+            },
+            "lowStock": {
+                "title": "库存不足提醒",
+                "message": "商品\"特制汉堡\"库存即将耗尽"
+            },
+            "paymentFailed": {
+                "title": "支付失败",
+                "message": "订单 #1234 的支付失败。请检查支付详情。"
+            },
+            "newOrder": {
+                "title": "新订单",
+                "message": "您收到了一个新订单 #5678，金额为 $150.00"
+            },
+            "refundRequest": {
+                "title": "退款请求",
+                "message": "客户请求退款订单 #9012"
+            },
+            "realtime": {
+                "newOrder": {
+                    "title": "新订单提醒",
+                    "message": "您的店铺收到了一个新订单"
+                },
+                "lowStock": {
+                    "title": "库存提醒",
+                    "message": "多个商品库存即将不足"
+                },
+                "payment": {
+                    "title": "支付提醒",
+                    "message": "您最新订单的支付已处理完成"
+                }
+            }
+        }
     }
-  }
+}
   

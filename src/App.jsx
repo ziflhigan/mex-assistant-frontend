@@ -20,8 +20,6 @@ function App() {
 
           {/* Redirect base path to dashboard */}
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          <Route path="/settings" element={<SettingsPage />} />
-          <Route path="/notifications" element={<NotificationsPage />} />
         </Routes>
       </Router>
     </AppProvider>

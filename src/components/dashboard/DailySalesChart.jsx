@@ -9,6 +9,7 @@ import React, { useState, useEffect, useRef, forwardRef } from 'react';
 // --- Utilities ---
 import { formatCurrency } from '../../utils/numberFormatter';
 import { chartColors, getDefaultChartOptions } from '../../utils/chartUtils';
+import { useTranslation } from 'react-i18next';
 
 // --- Child Components ---
 import Loader from '../common/Loader'; // Can be used in placeholder
@@ -256,6 +257,8 @@ const DailySalesChart = forwardRef(({ data, expanded = false }, ref) => {
     // Find best day for insight text (handle empty data case)
     const bestDay = data.length > 0 ? data.reduce((max, item) => item.sales > max.sales ? item : max, data[0]) : null;
 
+    const { t } = useTranslation();
+
     return (
         <div className={`daily-sales-chart ${expanded ? 'expanded' : ''}`}>
             {/* Chart options */}
@@ -293,12 +296,12 @@ const DailySalesChart = forwardRef(({ data, expanded = false }, ref) => {
                 {bestDay && (
                     <div className="insight-item">
                         <i className="fas fa-crown"></i>
-                        <span><strong>{bestDay.day}</strong> is typically your best-performing day.</span>
+                        <span>{t('dashboard.charts.dailySales.bestDay', { day: bestDay.day })}</span>
                     </div>
                 )}
                 <div className="insight-item">
                     <i className="fas fa-info-circle"></i>
-                    <span>Click on a bar for daily details.</span>
+                    <span>{t('dashboard.charts.dailySales.clickForDetails')}</span>
                 </div>
             </div>
         </div>

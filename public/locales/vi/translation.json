@@ -6,7 +6,7 @@
       "save": "Lưu",
       "cancel": "Hủy",
       "delete": "Xóa",
-      "edit": "Sửa",
+      "edit": "Chỉnh sửa",
       "submit": "Gửi",
       "search": "Tìm kiếm",
       "filter": "Lọc",
@@ -28,7 +28,7 @@
       "email": "Email",
       "password": "Mật khẩu",
       "forgotPassword": "Quên mật khẩu?",
-      "rememberMe": "Ghi nhớ tôi"
+      "rememberMe": "Ghi nhớ đăng nhập"
     },
     "chat": {
       "sendMessage": "Gửi tin nhắn",
@@ -44,7 +44,7 @@
       "subtitle": "Quản lý cài đặt và tùy chọn tài khoản của bạn",
       "saveSuccess": "Đã lưu cài đặt thành công",
       "personal": "Thông tin cá nhân",
-      "business": "Cài đặt doanh nghiệp",
+      "business": "Cài đặt kinh doanh",
       "notifications": "Thông báo",
       "preferences": "Tùy chọn",
       
@@ -54,11 +54,11 @@
       "language": "Ngôn ngữ",
       "timezone": "Múi giờ",
       
-      "businessInfo": "Thông tin doanh nghiệp",
+      "businessInfo": "Thông tin kinh doanh",
       "businessName": "Tên doanh nghiệp",
-      "businessType": "Loại hình doanh nghiệp",
-      "address": "Địa chỉ doanh nghiệp",
-      "operatingHours": "Giờ hoạt động",
+      "businessType": "Loại hình kinh doanh",
+      "address": "Địa chỉ kinh doanh",
+      "operatingHours": "Giờ làm việc",
       "openingTime": "Giờ mở cửa",
       "closingTime": "Giờ đóng cửa",
       "currency": "Tiền tệ",
@@ -68,10 +68,10 @@
       "notificationPreferences": "Tùy chọn thông báo",
       "email": "Thông báo qua email",
       "push": "Thông báo đẩy",
-      "salesAlerts": "Cảnh báo doanh số",
+      "salesAlerts": "Cảnh báo bán hàng",
       "lowStockAlerts": "Cảnh báo hàng tồn kho thấp",
       "orderNotifications": "Thông báo đơn hàng",
-      "customerReviews": "Đánh giá khách hàng",
+      "customerReviews": "Đánh giá của khách hàng",
       
       "theme": "Giao diện",
       "lightTheme": "Giao diện sáng",
@@ -79,17 +79,17 @@
       "systemTheme": "Giao diện hệ thống",
       "fontSize": "Cỡ chữ",
       "small": "Nhỏ",
-      "medium": "Vừa",
+      "medium": "Trung bình",
       "large": "Lớn",
       "highContrast": "Chế độ tương phản cao",
-      "compactMode": "Chế độ thu gọn",
+      "compactMode": "Chế độ gọn gàng",
       "autoRefresh": "Tự động làm mới",
       "refreshInterval": "Khoảng thời gian làm mới",
       
       "businessTypes": {
         "restaurant": "Nhà hàng",
         "cafe": "Quán cà phê",
-        "foodStall": "Quầy ăn",
+        "foodStall": "Quầy thức ăn",
         "bakery": "Tiệm bánh"
       },
       
@@ -107,10 +107,10 @@
       },
       
       "tooltips": {
-        "highContrast": "Tăng độ tương phản để dễ nhìn hơn",
+        "highContrast": "Tăng độ tương phản để cải thiện khả năng hiển thị",
         "compactMode": "Giảm khoảng cách trong giao diện",
-        "autoRefresh": "Tự động làm mới dữ liệu theo khoảng thời gian",
-        "deliveryRadius": "Khoảng cách giao hàng tối đa tính bằng kilômét",
+        "autoRefresh": "Tự động làm mới dữ liệu theo khoảng thời gian đã định",
+        "deliveryRadius": "Khoảng cách giao hàng tối đa tính bằng km",
         "taxRate": "Thuế suất mặc định cho giao dịch"
       }
     },
@@ -127,7 +127,7 @@
       "required": "Trường này là bắt buộc",
       "invalidEmail": "Địa chỉ email không hợp lệ",
       "passwordLength": "Mật khẩu phải có ít nhất 8 ký tự",
-      "networkError": "Lỗi mạng. Vui lòng kiểm tra kết nối của bạn",
+      "networkError": "Lỗi mạng. Vui lòng kiểm tra kết nối của bạn.",
       "unknownError": "Đã xảy ra lỗi không xác định"
     },
     "dates": {
@@ -137,11 +137,194 @@
     },
     "homePage": {
       "welcome": "Chào mừng đến với ứng dụng của chúng tôi",
-      "intro": "Đây là ví dụ về cách thiết lập hỗ trợ đa ngôn ngữ"
+      "intro": "Đây là ví dụ về cách thiết lập hỗ trợ đa ngôn ngữ."
     },
     "settingsPage": {
       "header": "Cài đặt",
       "language": "Thay đổi ngôn ngữ"
+    },
+    "dashboard": {
+        "title": "Bảng điều khiển người bán",
+        "lastUpdated": "Cập nhật lần cuối: {{time}}",
+        "loading": "Đang tải thông tin chi tiết kinh doanh của bạn...",
+        "error": {
+            "title": "Lỗi",
+            "retry": "Thử lại"
+        },
+        "actions": {
+            "export": "Xuất dữ liệu",
+            "refresh": "Làm mới",
+            "expand": "Mở rộng",
+            "collapse": "Thu gọn"
+        },
+        "stats": {
+            "title": "Thống kê tổng quan",
+            "totalSales": {
+                "title": "Tổng doanh số",
+                "info": "Tổng doanh thu từ tất cả đơn hàng"
+            },
+            "totalOrders": {
+                "title": "Tổng đơn hàng",
+                "info": "Số lượng giao dịch đã hoàn thành"
+            },
+            "averageOrderValue": {
+                "title": "Giá trị đơn hàng trung bình",
+                "info": "Doanh thu trung bình trên mỗi giao dịch"
+            },
+            "preparationTime": {
+                "title": "Thời gian chuẩn bị trung bình",
+                "info": "Thời gian từ đơn hàng đến khi nhận hàng"
+            },
+            "comparison": {
+                "since": "từ {{period}}"
+            }
+        },
+        "charts": {
+            "salesTrend": {
+                "title": "Xu hướng bán hàng",
+                "noData": "Không có dữ liệu xu hướng cho khoảng thời gian đã chọn",
+                "predictionNote": "Dự đoán dựa trên xu hướng gần đây và có thể không phản ánh hiệu suất thực tế trong tương lai",
+                "views": {
+                    "sales": "Doanh số",
+                    "orders": "Đơn hàng",
+                    "both": "Cả hai"
+                },
+                "tooltips": {
+                    "sales": "Hiển thị xu hướng doanh số",
+                    "orders": "Hiển thị xu hướng đơn hàng",
+                    "both": "Hiển thị xu hướng doanh số và đơn hàng"
+                },
+                "togglePrediction": "Chuyển đổi dự đoán xu hướng",
+                "showPrediction": "Hiển thị dự đoán",
+                "toggleComparison": "Chuyển đổi so sánh với kỳ trước",
+                "comparePeriod": "So sánh kỳ",
+                "previous": "Trước",
+                "vsPrevious": "so với trước"
+            },
+            "dailySales": {
+                "title": "Doanh số hàng ngày",
+                "noData": "Không có dữ liệu doanh số hàng ngày",
+                "clickForDetails": "Nhấp vào cột để xem chi tiết theo ngày",
+                "bestDay": "{{day}} thường là ngày có hiệu suất tốt nhất của bạn"
+            },
+            "hourlySales": {
+                "title": "Doanh số theo giờ",
+                "noData": "Không có dữ liệu doanh số theo giờ",
+                "barView": "Chuyển sang xem dạng cột",
+                "bar": "Cột",
+                "trendView": "Chuyển sang xem xu hướng",
+                "togglePeaks": "Chuyển đổi đánh dấu giờ cao điểm",
+                "highlightPeaks": "Đánh dấu cao điểm"
+            },
+            "trend": "xu hướng"
+        },
+        "topItems": {
+            "title": "Sản phẩm bán chạy",
+            "search": "Tìm kiếm sản phẩm...",
+            "category": "Danh mục:",
+            "noData": {
+                "title": "Không có dữ liệu sản phẩm",
+                "subtitle": "Khi bạn bắt đầu bán, sản phẩm bán chạy của bạn sẽ xuất hiện ở đây."
+            },
+            "summary": {
+                "topItem": "Sản phẩm hàng đầu",
+                "totalOrders": "Tổng đơn hàng",
+                "totalRevenue": "Tổng doanh thu",
+                "orders": "đơn hàng",
+                "items": "sản phẩm",
+                "average": "Trung bình: {{value}}/sản phẩm"
+            }
+        },
+        "aiInsights": {
+            "title": "Thông tin chi tiết bằng AI",
+            "viewAll": "Xem tất cả thông tin chi tiết",
+            "noInsights": {
+                "title": "Không có thông tin chi tiết tại thời điểm này.",
+                "subtitle": "Kiểm tra lại sau để biết các đề xuất bằng AI."
+            },
+            "actions": {
+                "takeAction": "Thực hiện hành động",
+                "viewDetails": "Xem chi tiết",
+                "scheduleTask": "Lên lịch công việc",
+                "dismiss": "Bỏ qua"
+            },
+            "severity": {
+                "high": "cao",
+                "medium": "trung bình",
+                "low": "thấp"
+            }
+        }
+    },
+    "notifications": {
+        "title": "Thông báo",
+        "empty": "Chưa có thông báo nào",
+        "actions": {
+            "markAllRead": "Đánh dấu tất cả đã đọc",
+            "clearAll": "Xóa tất cả",
+            "markAsRead": "Đánh dấu đã đọc",
+            "delete": "Xóa"
+        },
+        "search": {
+            "placeholder": "Tìm kiếm thông báo..."
+        },
+        "filters": {
+            "categories": {
+                "all": "Tất cả danh mục",
+                "orders": "Đơn hàng",
+                "inventory": "Kho hàng",
+                "payments": "Thanh toán"
+            },
+            "status": {
+                "all": "Tất cả trạng thái",
+                "read": "Đã đọc",
+                "unread": "Chưa đọc"
+            }
+        },
+        "sort": {
+            "byDate": "Sắp xếp theo ngày",
+            "byPriority": "Sắp xếp theo mức độ ưu tiên",
+            "toggleOrder": "Đảo ngược thứ tự sắp xếp"
+        },
+        "dummy": {
+            "highSales": {
+                "title": "Thông báo doanh số cao",
+                "message": "Doanh số của bạn đã tăng 25% so với hôm qua"
+            },
+            "newFeature": {
+                "title": "Tính năng mới",
+                "message": "Hãy khám phá bảng điều khiển phân tích mới của chúng tôi"
+            },
+            "lowStock": {
+                "title": "Cảnh báo hàng tồn kho thấp",
+                "message": "Sản phẩm \"Burger Đặc biệt\" sắp hết hàng"
+            },
+            "paymentFailed": {
+                "title": "Thanh toán thất bại",
+                "message": "Thanh toán cho đơn hàng #1234 đã thất bại. Vui lòng kiểm tra thông tin thanh toán."
+            },
+            "newOrder": {
+                "title": "Đơn hàng mới",
+                "message": "Bạn đã nhận được đơn hàng mới #5678 trị giá $150.00"
+            },
+            "refundRequest": {
+                "title": "Yêu cầu hoàn tiền",
+                "message": "Khách hàng đã yêu cầu hoàn tiền cho đơn hàng #9012"
+            },
+            "realtime": {
+                "newOrder": {
+                    "title": "Thông báo đơn hàng mới",
+                    "message": "Có một đơn hàng mới trong cửa hàng của bạn"
+                },
+                "lowStock": {
+                    "title": "Cảnh báo kho hàng",
+                    "message": "Nhiều sản phẩm sắp hết hàng"
+                },
+                "payment": {
+                    "title": "Thông báo thanh toán",
+                    "message": "Thanh toán cho đơn hàng mới nhất của bạn đã được xử lý"
+                }
+            }
+        }
     }
-  }
+}
   

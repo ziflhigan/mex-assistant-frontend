@@ -142,6 +142,117 @@
     "settingsPage": {
       "header": "Pengaturan",
       "language": "Ubah Bahasa"
+    },
+    "dashboard": {
+        "title": "Dashboard Pedagang",
+        "lastUpdated": "Terakhir diperbarui: {{time}}",
+        "loading": "Memuat wawasan bisnis Anda...",
+        "error": {
+            "title": "Kesalahan",
+            "retry": "Coba Lagi"
+        },
+        "actions": {
+            "export": "Ekspor Data",
+            "refresh": "Segarkan",
+            "expand": "Perluas",
+            "collapse": "Ciutkan"
+        },
+        "stats": {
+            "totalSales": {
+                "title": "Total Penjualan",
+                "info": "Total pendapatan dari semua pesanan"
+            },
+            "totalOrders": {
+                "title": "Total Pesanan",
+                "info": "Jumlah transaksi yang selesai"
+            },
+            "averageOrderValue": {
+                "title": "Rata-rata Nilai Pesanan",
+                "info": "Rata-rata pendapatan per transaksi"
+            },
+            "preparationTime": {
+                "title": "Rata-rata Waktu Persiapan",
+                "info": "Waktu dari pesanan hingga pengambilan"
+            },
+            "comparison": {
+                "since": "sejak {{period}}"
+            }
+        },
+        "charts": {
+            "trend": "tren",
+            "salesTrend": {
+                "title": "Tren Penjualan",
+                "noData": "Tidak ada data tren tersedia untuk periode yang dipilih.",
+                "predictionNote": "Prediksi berdasarkan tren terkini dan mungkin tidak mencerminkan kinerja aktual di masa depan.",
+                "views": {
+                    "sales": "Penjualan",
+                    "orders": "Pesanan",
+                    "both": "Keduanya"
+                },
+                "tooltips": {
+                    "sales": "Tampilkan Tren Penjualan",
+                    "orders": "Tampilkan Tren Pesanan",
+                    "both": "Tampilkan Tren Penjualan dan Pesanan"
+                },
+                "togglePrediction": "Alihkan Prediksi Tren",
+                "showPrediction": "Tampilkan Prediksi",
+                "toggleComparison": "Alihkan Perbandingan Periode Sebelumnya",
+                "comparePeriod": "Bandingkan Periode",
+                "previous": "Sebelumnya",
+                "vsPrevious": "vs sebelumnya"
+            },
+            "dailySales": {
+                "title": "Penjualan Harian",
+                "noData": "Tidak ada data penjualan harian tersedia.",
+                "bestDay": "{{day}} biasanya adalah hari dengan kinerja terbaik Anda",
+                "clickForDetails": "Klik pada batang untuk detail harian"
+            },
+            "hourlySales": {
+                "title": "Penjualan per Jam",
+                "noData": "Tidak ada data penjualan per jam tersedia",
+                "barView": "Beralih ke Tampilan Batang",
+                "bar": "Batang",
+                "trendView": "Beralih ke Tampilan Tren",
+                "togglePeaks": "Alihkan penandaan jam puncak",
+                "highlightPeaks": "Sorot Puncak"
+            }
+        },
+        "topItems": {
+            "title": "Item Terlaris",
+            "search": "Cari item...",
+            "category": "Kategori:",
+            "noData": {
+                "title": "Tidak ada data item tersedia",
+                "subtitle": "Ketika Anda mulai menjual, item terlaris Anda akan muncul di sini."
+            },
+            "summary": {
+                "topItem": "Item Teratas",
+                "totalOrders": "Total Pesanan",
+                "totalRevenue": "Total Pendapatan",
+                "orders": "pesanan",
+                "items": "item",
+                "average": "Rata-rata: {{value}}/item"
+            }
+        },
+        "aiInsights": {
+            "title": "Wawasan Berbasis AI",
+            "viewAll": "Lihat Semua Wawasan",
+            "noInsights": {
+                "title": "Tidak ada wawasan tersedia saat ini.",
+                "subtitle": "Periksa kembali nanti untuk rekomendasi berbasis AI."
+            },
+            "actions": {
+                "takeAction": "Ambil Tindakan",
+                "viewDetails": "Lihat Detail",
+                "scheduleTask": "Jadwalkan Tugas",
+                "dismiss": "Abaikan"
+            },
+            "severity": {
+                "high": "tinggi",
+                "medium": "sedang",
+                "low": "rendah"
+            }
+        }
     }
   }
   

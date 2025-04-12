@@ -241,5 +241,119 @@
           }
         }
       }
+    },
+    "dashboard": {
+        "title": "Merchant Dashboard",
+        "lastUpdated": "Last updated: {{time}}",
+        "loading": "Loading your business insights...",
+        "error": {
+            "title": "Error",
+            "retry": "Retry"
+        },
+        "actions": {
+            "export": "Export Data",
+            "refresh": "Refresh",
+            "expand": "Expand",
+            "collapse": "Collapse"
+        },
+        "stats": {
+            "title": "Overview Statistics",
+            "totalSales": {
+                "title": "Total Sales",
+                "info": "Total revenue from all orders"
+            },
+            "totalOrders": {
+                "title": "Total Orders",
+                "info": "Number of completed transactions"
+            },
+            "averageOrderValue": {
+                "title": "Average Order Value",
+                "info": "Average revenue per transaction"
+            },
+            "preparationTime": {
+                "title": "Avg Preparation Time",
+                "info": "Time from order to pickup"
+            },
+            "comparison": {
+                "since": "since {{period}}"
+            }
+        },
+        "charts": {
+            "trend": "Trend",
+            "salesTrend": {
+                "title": "Sales Trend",
+                "noData": "No trend data available for the selected period.",
+                "predictionNote": "Predictions are based on recent trends and may not reflect actual future performance.",
+                "views": {
+                    "sales": "Sales",
+                    "orders": "Orders",
+                    "both": "Both"
+                },
+                "tooltips": {
+                    "sales": "Show Sales Trend",
+                    "orders": "Show Orders Trend",
+                    "both": "Show Both Sales and Orders Trends"
+                },
+                "togglePrediction": "Toggle Trend Prediction",
+                "showPrediction": "Show Prediction",
+                "toggleComparison": "Toggle Previous Period Comparison",
+                "comparePeriod": "Compare Period",
+                "previous": "Previous",
+                "vsPrevious": "vs previous"
+            },
+            "dailySales": {
+                "title": "Daily Sales",
+                "noData": "No daily sales data available.",
+                "clickForDetails": "Click on a bar for daily details.",
+                "bestDay": "{{day}} is typically your best-performing day.",
+                "bestDay": "{{day}} is typically your best-performing day",
+                "clickForDetails": "Click on a bar for daily details"
+            },
+            "hourlySales": {
+                "title": "Hourly Sales",
+                "noData": "No hourly sales data available",
+                "barView": "Switch to Bar View",
+                "bar": "Bar",
+                "trendView": "Switch to Trend View",
+                "togglePeaks": "Toggle peak hour highlighting",
+                "highlightPeaks": "Highlight Peaks"
+            }
+        },
+        "topItems": {
+            "title": "Top Selling Items",
+            "search": "Search items...",
+            "category": "Category:",
+            "noData": {
+                "title": "No item data available",
+                "subtitle": "When you start selling, your top items will appear here."
+            },
+            "summary": {
+                "topItem": "Top Item",
+                "totalOrders": "Total Orders",
+                "totalRevenue": "Total Revenue",
+                "orders": "orders",
+                "items": "items",
+                "average": "Average: {{value}}/item"
+            }
+        },
+        "aiInsights": {
+            "title": "AI-Powered Insights",
+            "viewAll": "View All Insights",
+            "noInsights": {
+                "title": "No insights available at this time.",
+                "subtitle": "Check back later for AI-powered recommendations."
+            },
+            "actions": {
+                "takeAction": "Take Action",
+                "viewDetails": "View Details",
+                "scheduleTask": "Schedule Task",
+                "dismiss": "Dismiss"
+            },
+            "severity": {
+                "high": "high",
+                "medium": "medium",
+                "low": "low"
+            }
+        }
     }
   }  
