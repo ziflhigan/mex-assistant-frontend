@@ -9,6 +9,10 @@
 [**Proposal Document**](https://www.notion.so/MEX-Assistant-Proposal-Sudo_Chill-1d36b616bf6b8087b9cac0def49c3d8d?pvs=4)
 </div>
 
+## Offline Documents
+- [**Proposal**](./assets/MEX_Assistant_Proposal_-_Sudo_Chill.pdf)
+- [**Presentation Slides**](./assets/UM%20HACKATHON%202025%20-%20Sudo_Chill%20Presentation.pdf)
+
 ## 📋 Table of Contents
 - [Overview]
 - [Features]
