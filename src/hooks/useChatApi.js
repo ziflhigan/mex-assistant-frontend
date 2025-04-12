@@ -1,32 +1,90 @@
+import { useCallback } from 'react';
 import { useChatContext } from '../contexts/ChatContext';
-import chatService from '../services/chatService';
+import { getMockChatResponse } from '../services/mockService';
 
-// Custom hook to handle sending messages and receiving assistant replies
-export default function useChatApi() {
-    const { dispatch, language } = useChatContext();
+/**
+ * Custom hook for handling chat API interactions
+ * Abstracts away the API details from the UI components
+ */
+const useChatApi = () => {
+    const {
+        dispatch,
+        merchant,
+        timeFilter,
+        setLanguage,
+        language
+    } = useChatContext();
 
-    // Send a new user message and handle the assistant's response
-    const sendMessage = async (userMessage) => {
-        if (!userMessage || userMessage.trim() === '') {
-            return; // ignore empty messages
-        }
-        const content = userMessage.trim();
-        // Dispatch the user message to context (adds it to chat and shows typing indicator)
-        dispatch({ type: 'SEND_MESSAGE', payload: content });
+    /**
+     * Send a message and handle the response
+     * This simulates the LLM agent pattern described in the documentation
+     */
+    const sendMessage = useCallback(async (messageText) => {
+        if (!messageText.trim()) return;
+
+        // Add user message to chat
+        dispatch({ type: 'SEND_MESSAGE', payload: messageText });
+
         try {
-            // Call chat service to get the assistant's response (simulate API call)
-            const assistantResponse = await chatService.sendMessage(content, language);
-            // Dispatch the assistant's message to context (adds message and hides typing indicator)
-            dispatch({ type: 'RECEIVE_MESSAGE', payload: assistantResponse });
+            // Check for language change commands
+            if (messageText.toLowerCase().startsWith('/language') ||
+                messageText.toLowerCase().startsWith('/lang')) {
+                const langCode = messageText.split(' ')[1];
+                if (langCode) {
+                    setLanguage(langCode);
+
+                    // Send confirmation message
+                    dispatch({
+                        type: 'RECEIVE_MESSAGE',
+                        payload: {
+                            sender: 'assistant',
+                            type: 'text',
+                            content: `Language changed to ${langCode}`
+                        }
+                    });
+                    return;
+                }
+            }
+
+            // Otherwise, process with the agent (either real or mock)
+            // The actual agent handler implementation is in ChatContext.jsx
+
+            // For a real implementation, we would fetch from an API
+            // const response = await api.processMessage({
+            //   message: messageText,
+            //   merchantId: merchant.id,
+            //   timeFilter,
+            //   language
+            // });
+
+            // Mock API just simulates the calls that would be made to LangChain
+            // and returns a response. This makes testing easier during development.
+            const response = await getMockChatResponse(
+                messageText,
+                merchant.id,
+                timeFilter
+            );
+
+            // The response is handled automatically by the ChatContext provider
+
         } catch (error) {
             console.error('Error sending message:', error);
-            // On error, dispatch a fallback error message from assistant
+
+            // Send error message
             dispatch({
                 type: 'RECEIVE_MESSAGE',
-                payload: { sender: 'assistant', type: 'text', content: 'Oops, something went wrong.' }
+                payload: {
+                    sender: 'assistant',
+                    type: 'text',
+                    content: 'Sorry, I encountered an error. Please try again later.'
+                }
             });
         }
-    };
+    }, [dispatch, merchant.id, timeFilter, setLanguage, language]);
 
-    return { sendMessage };
-}
+    return {
+        sendMessage
+    };
+};
+
+export default useChatApi;

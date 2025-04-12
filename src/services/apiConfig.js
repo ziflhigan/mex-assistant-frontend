@@ -4,7 +4,7 @@
 
 const apiConfig = {
     // Base URL for API endpoints
-    baseUrl: process.env.REACT_APP_API_URL || 'https://api.example.com/v1',
+    // baseUrl: process.env.REACT_APP_API_URL || 'https://api.example.com/v1',
 
     // Default request timeout in milliseconds
     timeout: 30000,
